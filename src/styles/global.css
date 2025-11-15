@@ -6,9 +6,10 @@
 
 :root {
   --background: #ffffff;
-  --primary: #171717;
+  --primary: #EDE8DB;
   --primary-light: #171717;
   --primary-dark: #171717;
+  --secondary-dark: #525252;
 }
 
 @theme inline {
@@ -16,6 +17,7 @@
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
   --color-primary-dark: var(--primary-dark);
+  --color-secondary-dark: var(--secondary-dark);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }

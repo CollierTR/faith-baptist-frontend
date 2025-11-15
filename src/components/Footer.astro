@@ -1,11 +1,23 @@
 ---
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons'
+import { faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons'
 ---
 
-<footer class="bg-orange-50">
-  <p>footer</p>
-  <p>footer</p>
-  <FontAwesomeIcon icon={faEnvelope} class=""/>
+<footer class="bg-primary flex justify-evenly place-items-start pt-5 pb-5">
+  <div class="flex-col">
+    <h1 class="font-bold">SERVICE TIMES</h1>
+    <p class="pb-3"> Sunday Bible Study : 10:00 AM <br/> Sunday Morning Worship: 11:00 AM <br/> Wednesday Prayer: 7:00 PM <br/> <a class="underline hover:text-secondary-dark">Learn More</a></p>
+  </div>
+  <div class="flex-col">
+    <h1 class="font-bold">FAITH BAPTIST CHURCH</h1>
+    <p>502 N Florence  ​.  ​Kirksville, MO 63501 <br/> 660-665-1622</p>
+    <div class="text-2xl">
+      <a href="https://www.facebook.com/faithbaptistkv" target="_blank" class="hover:text-secondary-dark"><FontAwesomeIcon icon={faFacebook} /></a>
+      <a href="" target="" class="hover:text-secondary-dark"></a><FontAwesomeIcon icon={faEnvelope} /></a>
+      <a href="https://maps.app.goo.gl/BJqNRzsVsEP34xSv9" target="_blank" class="hover:text-secondary-dark"><FontAwesomeIcon icon={faLocationDot} /></a>
+    </div>
+  </div>
 </footer>
 
