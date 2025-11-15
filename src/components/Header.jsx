@@ -18,11 +18,13 @@ export default function Header() {
       </div>
       { 
         navOpen &&
-        <div className="bg-primary text-primary-dark absolute flex flex-col gap-5 top-0 right-0 ">
-          <FontAwesomeIcon onClick={() => {toggleNav(false)}} icon={faX} />
-          <a href="">BIBLICAL COUNSELING</a>
-          <a href="">RESOURCES</a>
-          <a href="/contact">CONTACT</a>
+        <div className="bg-background text-primary-dark absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 ">
+          <div className="flex justify-end text-xl pr-3 pt-4 hover:text-red-400">
+            <FontAwesomeIcon onClick={() => {toggleNav(false)}} icon={faX} />
+          </div>
+          <a href="/biblical-counseling" className="text-2xl px-6 pb-3 hover:text-secondary-dark">BIBLICAL COUNSELING</a>
+          <a href="/resources" className="text-2xl px-6 pb-3 hover:text-secondary-dark">RESOURCES</a>
+          <a href="/contact" className="text-2xl px-6 pb-3 hover:text-secondary-dark">CONTACT</a>
         </div>
       }
     </div>
