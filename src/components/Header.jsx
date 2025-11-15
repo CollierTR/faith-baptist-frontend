@@ -6,7 +6,7 @@ import { faX } from "@fortawesome/free-solid-svg-icons";
 export default function Header() {
   const [navOpen, toggleNav] = useState(false)
   return (
-    <div className="p-3 flex justify-between relative">
+    <div className="p-3 flex justify-between relative shadow-md">
       <div>
         <h1 className="text-2xl font-bold"><a href="/">FAITH BAPTIST CHURCH</a></h1>
       </div>
@@ -18,7 +18,7 @@ export default function Header() {
       </div>
       { 
         navOpen &&
-        <div className="bg-background text-primary-dark absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 ">
+        <div className="bg-background text-primary-dark absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 drop-shadow-xl">
           <div className="flex justify-end text-xl pr-3 pt-4 hover:text-red-400">
             <FontAwesomeIcon onClick={() => {toggleNav(false)}} icon={faX} />
           </div>
