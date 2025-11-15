@@ -14,10 +14,10 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
-	<body>
-    <Header client:load/>
-		<slot />
-    <Footer />
+	<body class="min-h-screen flex flex-col justify-between">
+      <Header client:load/>
+        <slot />
+      <Footer />
 	</body>
 </html>
 
