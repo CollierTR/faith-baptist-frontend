@@ -9,13 +9,13 @@ export default function Header() {
   return (
     <div className="p-3 flex justify-between place-items-center relative shadow-md">
       <div>
-        <h1 className="text-lg lg:text-2xl text-nowrap font-bold">
+        <h1 className="text-lg text-primary lg:text-2xl text-nowrap font-bold">
           <a href="/">FAITH BAPTIST CHURCH</a>
         </h1>
       </div>
 
       {/* sect: Desktop display only */}
-      <div className="text-2xl">
+      <div className="text-2xl text-primary-light">
         <div className="hidden lg:inline-block">
           <a href="/" className="p-3 hover:text-secondary-dark">
             HOME
@@ -32,20 +32,21 @@ export default function Header() {
             toggleNav(true);
           }}
           icon={faBars}
-          className="inline-block"
+          className="inline-block hover:text-secondary-dark cursor-pointer"
         />
       </div>
 
       {
         // sect: This is for the Hamburger Menu
         navOpen && (
-          <div className="bg-background text-primary-dark text-xl lg:text-2xl absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 drop-shadow-xl">
+          <div className="parchment-background text-primary-dark text-xl lg:text-2xl absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 drop-shadow-xl">
             <div className="flex justify-end text-2xl pr-3 pt-4 hover:text-red-400">
               <FontAwesomeIcon
                 onClick={() => {
                   toggleNav(false);
                 }}
                 icon={faX}
+                className="cursor-pointer"
               />
             </div>
             <a
