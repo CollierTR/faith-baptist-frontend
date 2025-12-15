@@ -6,7 +6,7 @@
 
 :root {
   --background: #ffffff;
-  --primary: #EDE8DB;
+  --primary: #ede8db;
   --primary-light: #ffffff;
   --primary-dark: #171717;
   --secondary-dark: #525252;
@@ -29,3 +29,14 @@ body {
   padding: 0;
 }
 
+.parchment-background {
+  background-color: #cc9f5c;
+  background-image: url("https://www.transparenttextures.com/patterns/natural-paper.png");
+  /* FIX:  This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
+
+.floral-background {
+  background-color: #4d1b00;
+  background-image: url("https://www.transparenttextures.com/patterns/xv.png");
+  /* FIX:  This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
+}
