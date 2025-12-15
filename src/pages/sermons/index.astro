@@ -1,7 +1,8 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 
-let res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?per_page=100");
+// let res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?per_page=100");
+let res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=100");
 let posts = await res.json();
 ---
 <Layout>
