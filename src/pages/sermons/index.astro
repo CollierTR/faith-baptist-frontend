@@ -1,22 +1,17 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-
-// let res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?per_page=100");
-let res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=100");
-let posts = await res.json();
+const res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=100");
+const posts = await res.json();
 ---
 <Layout>
-  <section>
-    <h1>List of Posts</h1>
-    {
-      posts.map((post) => (
-        <article>
-          <h2>
-            <a href={`/sermons/${post.slug}/`} set:html={post.title.rendered} />
-          </h2>
-          <!-- <Fragment set:html={post.content.rendered} /> -->
-        </article>
-      ))
-    }
-  </section>
+  <main class="container">
+    <h1>Sermons</h1>
+    <ul>
+      {posts.map(post => (
+        <li>
+          <a href={`/sermons/${post.slug}/`} set:html={post.title.rendered}></a>
+        </li>
+      ))}
+    </ul>
+  </main>
 </Layout>

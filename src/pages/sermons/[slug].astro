@@ -1,27 +1,20 @@
 ---
-// import Layout from '../../layouts/Layout.astro';
-
-const { slug } = Astro.params;
-
-//let res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?slug=${slug}`);
-let res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?slug=${slug}`);
-let [post] = await res.json();
-
-// The getStaticPaths() is required for static Astro sites.
-// If using SSR, you will not need this function.
+import Layout from '../../layouts/Layout.astro';
 export async function getStaticPaths() {
-  let data = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/media");
-  let posts = await data.json();
-
-  return posts.map((post) => ({
+  const res = await fetch("https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=100");
+  const posts = await res.json();
+  return posts.map(post => ({
     params: { slug: post.slug },
-    props: { post: post },
+    props: { post },
   }));
 }
+const { post } = Astro.props;
 ---
-<!-- <Layout title={post.title.rendered}> -->
-  <article>
-    <h1 set:html={post.title.rendered} />
-    <Fragment set:html={post.content.rendered} />
-  </article>
-<!-- </Layout> -->
+<Layout title={post.title.rendered}>
+  <main class="container">
+    <h1 set:html={post.title.rendered}></h1>
+    <audio controls>
+      <source src={post.source_url} type={post.mime_type}>
+    </audio>
+  </main>
+</Layout>
