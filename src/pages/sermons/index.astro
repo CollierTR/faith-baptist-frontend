@@ -3,7 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import LoadMoreSermons from "../../components/sermons/LoadMoreSermons.jsx";
 ---
 <Layout>
-  <main class="container">
+  <main class="w-10/12 flex flex-col place-items-center mx-auto">
     <h1>Sermons</h1>
     <LoadMoreSermons client:load />
   </main>
