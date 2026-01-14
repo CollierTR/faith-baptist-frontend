@@ -3,37 +3,44 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import { faX } from "@fortawesome/free-solid-svg-icons";
 
-export default function Header() {
+export default function Header({ path }) {
+  const isActive = (href) =>
+    href === "/"
+      ? path === "/"
+      : path.startsWith(href);
   const [navOpen, toggleNav] = useState(false);
 
   return (
     <div className="p-3 flex justify-between place-items-center relative shadow-md">
       <div>
-        <h1 className="text-lg text-primary lg:text-2xl text-nowrap font-bold">
+        <h1 className="text-lg text-accent lg:text-2xl text-nowrap font-bold">
           <a href="/">FAITH BAPTIST CHURCH</a>
         </h1>
       </div>
 
       {/* sect: Desktop display only */}
-      <div className="text-2xl text-primary-light">
-        <div className="hidden lg:inline-block">
-          <a href="/" className="p-3 hover:text-secondary-dark">
-            HOME
+      <div className="text-xl text-primary-dark">
+        <div className="lg:flex gap-5 hidden">
+          <a href="/" className={ isActive("/") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
+            Home
           </a>
-          <a href="/about" className="p-3 hover:text-secondary-dark">
-            ABOUT
+          <a href="/sermons" className={ isActive("/sermons") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
+            Sermons
           </a>
-          <a href="/sermons" className="pl-3 pr-6 hover:text-secondary-dark">
-            SERMONS
+          <a href="/about" className={ isActive("/about") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
+            About
+          </a>
+          <a href="/contact" className={ isActive("/contact") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
+            Contact
           </a>
         </div>
-        <FontAwesomeIcon
+         {/* <FontAwesomeIcon
           onClick={() => {
             toggleNav(true);
           }}
           icon={faBars}
-          className="inline-block hover:text-secondary-dark cursor-pointer"
-        />
+          className="inline-block hover:text-secondary-dark cursor-pointer hidden"
+        /> */}
       </div>
 
       {
@@ -79,9 +86,7 @@ export default function Header() {
             >
               RESOURCES
             </a>
-            <a href="/contact" className="px-6 pb-3 hover:text-secondary-dark">
-              CONTACT
-            </a>
+            
           </div>
         )
       }

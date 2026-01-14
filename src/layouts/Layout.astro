@@ -3,6 +3,7 @@ import Footer from "../components/Footer.astro"
 import Header from "../components/Header.jsx"
 import "../styles/global.css"
 import '@fortawesome/fontawesome-svg-core/styles.css';
+const path = Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -15,7 +16,7 @@ import '@fortawesome/fontawesome-svg-core/styles.css';
 		<title>Astro Basics</title>
 	</head>
 	<body class="min-h-screen flex flex-col justify-between floral-background">
-      <Header client:load/>
+      <Header path={path} client:load/>
         <slot />
       <Footer />
 	</body>

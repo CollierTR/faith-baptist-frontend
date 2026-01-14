@@ -1,7 +1,18 @@
 ---
 import DoubleTitle from '../DoubleTitle.astro'
+import CardComponent from './CardComponent.astro'
+import Button from '../Button.astro'
 ---
 
-<section class="">
+<section class="bg-primary-light">
   <DoubleTitle topText="About Us" bootomText="Our Core Principles" />
+  <div class="flex flex-row justify-center gap-7">
+    <CardComponent />
+    <CardComponent title="Reformed" text="By principle and polity, we're independent local churches, under the Headship of Christ, congregated by regenerate baptized believers."/>
+    <CardComponent title="Confessional" text="By principle and polity, we're independent local churches, under the Headship of Christ, congregated by regenerate baptized believers."/>
+    <CardComponent title="Trinitarian" text="By principle and polity, we're independent local churches, under the Headship of Christ, congregated by regenerate baptized believers."/>
+  </div>
+  <div class="flex justify-center font-serif p-12">
+    <Button link="/about" text="Learn More!" />
+  </div>
 </section>
