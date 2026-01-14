@@ -3,8 +3,22 @@ import Layout from "../../layouts/Layout.astro";
 import LoadMoreSermons from "../../components/sermons/LoadMoreSermons.jsx";
 ---
 <Layout>
-  <main class="w-10/12 flex flex-col place-items-center mx-auto">
-    <h1>Sermons</h1>
-    <LoadMoreSermons client:load />
+  <main class="w-full flex flex-col place-items-center mx-auto bg-primary-light">
+    <div class="w-10/12 flex flex-col place-items-center">
+
+    <div class="flex justify-center place-items-center w-full h-[30vh]  bg-primary text-white rounded-b-xl">
+      <h1 class="text-5xl">SERMONS</h1>
+    </div>
+
+    <div class="flex w-[92%] gap-8 -mt-10">
+      <div class="bg-white rounded-md shadow-lg drop-shadow-lg flex-2">
+        dfkjdk
+      </div>
+      <div class="flex-7">
+        <LoadMoreSermons client:load />
+      </div>
+    </div>
+
+    </div>
   </main>
 </Layout>
