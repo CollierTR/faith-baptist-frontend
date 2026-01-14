@@ -1,23 +1,36 @@
 ---
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 ---
 
-<footer class="bg-primary text-background">
-  <div>
-    *FB*
-    *PHONE*
-    *EMAIL*
-    *MAP*
+<footer class="flex bg-primary justify-between p-5 text-background">
+  <div class="flex place-items-end text-xl gap-2 cursor-pointer">
+    <div class="hover:text-accent">
+      <FontAwesomeIcon icon={faFacebook}/>
+    </div>
+    <div class="hover:text-accent">
+      <FontAwesomeIcon icon={faPhone} />
+    </div>
+    <div class="hover:text-accent">
+      <FontAwesomeIcon icon={faEnvelope} />
+    </div>
+    <div class="hover:text-accent">
+      <FontAwesomeIcon icon={faLocationDot} />
+    </div>
   </div>
-  <div>
-    <p>"Speaking the truth in love."</p>
+  <div class="flex flex-col items-center">
+    LOGO HERE
+    <p class="italic pt-5">"Speaking the truth in love."</p>
+    <div class="pt-5">
     Home  Sermons  ABout Us  Resources  Contact
+    </div>
   </div>
-  <div>
+  <div class="flex place-items-end">
     <p>&#xA9 2026 All rights reserved</p>
   </div>
   
-  Footer Section
 </footer>
 
