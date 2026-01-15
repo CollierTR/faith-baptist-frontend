@@ -13,14 +13,14 @@ export default function Header({ path }) {
   return (
     <div className="p-3 flex justify-between place-items-center relative shadow-md">
       <div>
-        <h1 className="text-lg text-accent lg:text-2xl text-nowrap font-bold">
+        <h1 className="text-lg text-accent lg:text-2xl text-nowrap font-serif">
           <a href="/">FAITH BAPTIST CHURCH</a>
         </h1>
       </div>
 
       {/* sect: Desktop display only */}
       <div className="text-xl text-primary-dark">
-        <div className="lg:flex gap-5 hidden">
+        <div className="lg:flex gap-5 hidden font-serif">
           <a href="/" className={ isActive("/") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
             Home
           </a>
