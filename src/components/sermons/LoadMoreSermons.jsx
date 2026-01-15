@@ -10,6 +10,7 @@ export default function LoadMoreSermons() {
     const res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=50&page=${page}&orderby=date&order=desc`);
     const newSermons = await res.json();
     setSermons(prevSermons => [...prevSermons, ...newSermons]);
+    console.log(sermons)
     setLoading(false);
   };
 
@@ -18,23 +19,22 @@ export default function LoadMoreSermons() {
   }, [page]);
 
   return (
-    <div className={"flex flex-col place-items-center gap-20"}>
-      <div className={"flex flex-col gap-8 w-full"}>
+    <div className={"flex flex-col place-items-center gap-20 text-primary-dark"}>
+      <div className={"flex flex-col gap-10 w-full"}>
 
         {sermons.map(sermon => (
-          <div key={sermon.id} className={'w-full bg-white rounded-md mb-4 flex flex-col justify-between leading-normal shadow-lg drop-shodow-lg'}>
-            <div className="flex">
-              <a href={`/sermons/${sermon.slug}/`} className="text-black font-bold text-xl mb-2 hover:text-amber-700" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></a>
+          <div key={sermon.id} className={'w-full bg-white rounded-md mb-4 p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
+            <div className="flex flex-col gap-1">
+              <p className=" font-extralight">Jan 11, 2026</p>
+              <a href={`/sermons/${sermon.slug}/`} className="text-3xl font-semibold" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></a>
             </div>
 
-            {/* 
-            <div className="p-2">
-              <div className="mb-2">
-                <a href={`/sermons/${sermon.slug}/`} className="text-black font-bold text-xl mb-2 hover:text-amber-700" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></a>
-              </div>
-              <p className="text-gray-600 dark:text-gray-400 text-base">{new Date(sermon.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+            <p>By: Brandon Rhea</p>
+
+            <div className="flex gap-0.5 text-white"> 
+              <a href={sermon.source_url} target="_blank"><div className="bg-primary px-4 py-2 rounded-l-md">Listen</div></a>
+              <a href={`/api/download?src=${encodeURIComponent(sermon.source_url)}`}><div className="bg-primary px-4 py-2 rounded-r-md">Download</div></a>
             </div>
-            */}
 
           </div>
         ))}
