@@ -1,0 +1,15 @@
+---
+const { title="The Preeminence of Christ", passage="Colossians 1:16-17"} = Astro.props;
+import Button from "../Button.astro";
+---
+
+<div class="flex flex-row justify-center">
+  <div>
+
+  </div>
+  <div class="flex flex-col place-items-center font-serif justify-center bg-primary-light">
+    <h2 class="text-2xl">{title}</h2>
+    <p class="text-lg">{passage}</p>
+    <Button text="Play"/>
+  </div>
+</div>
