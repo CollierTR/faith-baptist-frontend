@@ -23,7 +23,7 @@ export default function LoadMoreSermons() {
       <div className={"flex flex-col gap-10 w-full"}>
 
         {sermons.map(sermon => (
-          <div key={sermon.id} className={'w-full bg-white rounded-md mb-4 p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
+          <div key={sermon.id} className={'w-full bg-white rounded-md p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
             <div className="flex flex-col gap-1">
               <p className=" font-extralight">Jan 11, 2026</p>
               <a href={`/sermons/${sermon.slug}/`} className="text-3xl font-semibold" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></a>
