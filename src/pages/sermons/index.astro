@@ -3,13 +3,30 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
 import Layout from '../../layouts/Layout.astro';
 import LoadMoreSermons from "../../components/sermons/LoadMoreSermons.jsx";
+import CategorySelection from "../../components/sermons/CategorySelection.jsx";
+import SpeakerSelection from "../../components/sermons/SpeakerSelection.jsx";
+const params = Astro.url.searchParams;
+
+const mode =
+  params.get('search') && 'search' ||
+  params.get('speaker') && 'speaker' ||
+  params.get('series') && 'series' ||
+  params.get('selection') && 'selection' ||
+  'all'
+
+const value =
+  params.get('search') ||
+  params.get('speaker') ||
+  params.get('series') ||
+  params.get('selection') ||
+  'all'
 ---
 <Layout>
-  <main class="w-full flex flex-col place-items-center mx-auto bg-primary-light">
+  <main class="w-full flex flex-col place-items-center mx-auto bg-primary-light min-h-screen">
     <div class="w-10/12 flex flex-col place-items-center">
 
     <div class="flex justify-center place-items-center w-full h-[30vh]  bg-primary text-white rounded-b-xl">
-      <h1 class="text-5xl">SERMONS</h1>
+      <h1 class="text-5xl">{params.get('title')?.toUpperCase() ?? "SERMONS"}</h1>
     </div>
 
     <div class="flex place-items-start w-[92%] gap-8 -mt-10">
@@ -17,16 +34,22 @@ import LoadMoreSermons from "../../components/sermons/LoadMoreSermons.jsx";
       <div class="flex flex-col gap-4 bg-white rounded-md shadow-lg drop-shadow-lg flex-2 p-10">
         <div class="flex gap-4 border-b-2 border-accent py-2 px-2 mb-2">
           <FontAwesomeIcon icon={faMagnifyingGlass}  transform={"down-4"} />
-          <input class="active:border-none" type="text" placeholder="Search">
+          <input id="search-input" class="active:border-none" type="text" placeholder="Search">
         </div>
         <p class="text-2xl">Index</p>
-        <p class="text-xl text-primary-dark indent-4">All</p>
-        <p class="text-xl text-primary-dark indent-4">Series</p>
-        <p class="text-xl text-primary-dark indent-4">Speaker</p>
+        <a href={"/sermons"}><p class="text-xl text-primary-dark indent-4 cursor-pointer">All</p></a>
+        <a href={`/sermons?selection=series&title=Series`}><p class="text-xl text-primary-dark indent-4 cursor-pointer">Series</p></a>
+        <!-- <a href={`/sermons?selection=speaker&title=Speakers`}><p class="text-xl text-primary-dark indent-4 cursor-pointer">Speaker</p></a> -->
       </div>
 
       <div class="flex-7">
-        <LoadMoreSermons client:load />
+        {
+          mode == "selection" 
+          ? value == "series"
+          ? <CategorySelection value={value} client:load />
+          : <SpeakerSelection client:load />
+          : <LoadMoreSermons mode={mode} value={value} client:load />
+        }
       </div>
 
     </div>
@@ -42,3 +65,18 @@ import LoadMoreSermons from "../../components/sermons/LoadMoreSermons.jsx";
     box-shadow: none;
   }
 </style>
+
+<script>
+  const input = document.getElementById("search-input");
+
+  const handleSearch = () => {
+    const query = input.value.trim();
+    if (!query) return;
+    // Navigate to the sermons page with the search query
+    window.location.href = `/sermons?search=${encodeURIComponent(query)}`;
+  };
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSearch();
+  });
+</script>
