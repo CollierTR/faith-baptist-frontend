@@ -1,0 +1,98 @@
+---
+import Button from "../Button.astro";
+---
+
+
+    <div class="w-11/12 flex justify-center mb-40 mt-32 gap-x-20 mx-auto lg:flex-row text-primary-light flex-col place-items-center lg:place-items-start gap-40">
+      <div class="flex-col flex gap-4 lg:gap-10 lg:w-5/12 w-10/12 blackOutline ">
+        <h1 class="lg:text-6xl text-accent font-serif text-5xl">
+          Let&apos;s Get in Touch!
+        </h1>
+        <p class="lg:text-2xl text-2xl text-black">
+          If you have a question or would like more information about Faith Baptist Church, please don't hesitate to reach out. We look forward to connecting with you.
+        </p>
+        <div class="flex gap-6">
+          <Button text="Call Us" link="tel:660-665-1622" />
+          <Button text="Email Us" link="mailto:faithbaptistkv@gmail.com" />
+        </div>
+      </div>
+
+      <div class="lg:w-5/12 w-full bg-primary-light py-16 rounded-2xl sm:w-9/12">
+        <form
+          name="Contact Form" 
+          netlify 
+          netlify-honeypot="bot-field"
+          class="flex flex-col gap-4 md:gap-6 place-items-center"
+          method="post"
+          action="/contact"
+        >
+          <input type="hidden" name="form-name" value="Contact Form" />
+          <span class="flex gap-2 flex-col md:w-3/4 w-10/12">
+            <input type="hidden" name="form-name" value="Contact Form" />
+            <label for="firstName" class="text-base md:text-xl text-black ">
+              First name:
+            </label>
+            <input
+              type="text"
+              name="firstName"
+              required
+              id="firstName"
+              placeholder="John"
+              class="md:text-xl border-2 rounded-lg p-2 border-primary bg-white"
+            />
+          </span>
+          <span class="flex gap-2 flex-col md:w-3/4 w-10/12">
+            <label for="lastName" class="text-base md:text-xl text-black">
+              Last Name:
+            </label>
+            <input
+              type="text"
+              placeholder="Calvin"
+              class="md:text-xl border-2 rounded-lg p-2 border-primary bg-white"
+              name="lastName"
+              required
+              id="lastName"
+            />
+			<input type="hidden" name="isStudentForm" value="Not Student Form" />
+          </span>
+          <span class="flex gap-2 flex-col w-10/12 md:w-3/4">
+            <label for="email" class="text-base md:text-xl text-black">
+              Email:
+            </label>
+            <input
+              class="md:text-xl border-2 rounded-lg p-2 border-primary bg-white"
+              type="email"
+              required
+              placeholder="tulips@insitutes.com"
+              id="email"
+              name="email"
+            />
+          </span>
+          <span class="flex gap-2 flex-col w-10/12 md:w-3/4">
+            <label for="text" class="text-base md:text-xl text-black">
+              How can we help you?
+            </label>
+            <textarea
+              required
+              id="text"
+              name="text"
+              placeholder="You're text here..."
+              class="ease-soft md:text-xl border-2 rounded-lg p-2 border-primary h-40 text-wrap bg-white"
+            ></textarea>
+          </span>
+          <button
+            type="submit"
+            class=" border-2 border-primary hover:border-primary-light text-white  bg-primary rounded-lg w-10/12 md:w-3/4 md:text-2xl robo py-2 md:py-3"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+    </div>
+
+
+<style>
+  ::placeholder { 
+    color: darkgray; 
+  }
+</style>
