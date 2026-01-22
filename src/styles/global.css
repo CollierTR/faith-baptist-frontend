@@ -6,8 +6,14 @@
 
 :root {
   --background: #ffffff;
-  --primary: #401919;
-  --primary-light: #e1dcd6;
+  /* Leave the commented out values for now */
+  /* --primary: #401919; */
+  --primary: #440E0D;
+  --primary-light: #E1D5CB;
+  /* --primary-light: #DACABE; */
+  /* --primary-light: #D3C0B1; */
+  /* --primary-light: #CCB6A4; */
+  /* --primary-light: #e1dcd6; */
   --primary-dark: #232523;
   --accent: #c69950;
 }
