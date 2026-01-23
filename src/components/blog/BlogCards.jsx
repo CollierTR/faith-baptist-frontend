@@ -8,26 +8,25 @@ export default function BlogCards({mode, value}) {
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
 
-  // TODO: I need to finish this by pluging in the value dynamically
   let filter;
   switch (mode) {
     case "speaker":
-      filter = `&user=${value}`;
+      filter = ``;
       break;
     case "series":
-      filter = `&categories=${value}`;
+      filter = ``;
       break;
     case "search":
       filter = `&search=${value}`;
       break;
     default:
-      filter = "&categories=3";
+      filter = "";
   }
 
 
   const fetchSermons = async () => {
     setLoading(true);
-    const res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?page=${page}&per_page=30`);
+    const res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?page=${page}&per_page=30${filter}`);
     const newSermons = await res.json();
     setSermons(prevSermons => [...prevSermons, ...newSermons]);
     console.log(newSermons)
@@ -53,9 +52,7 @@ export default function BlogCards({mode, value}) {
 
             <p>By: {sermon.categories.includes(7) ? "Brandon Rhea" : "Robert Price"}</p>
 
-            <div className="flex">
-              <img src="/imgs/Bible-Icon-1.svg" alt="" />
-            </div>
+            <p dangerouslySetInnerHTML={{ __html: sermon.excerpt.rendered }}></p>
 
           </div>
         )})}
