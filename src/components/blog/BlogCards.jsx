@@ -27,7 +27,7 @@ export default function BlogCards({mode, value}) {
 
   const fetchSermons = async () => {
     setLoading(true);
-    const res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=50&page=${page}&orderby=date&order=desc${filter}`);
+    const res = await fetch(`https://media.faithbaptistkirksville.org/wp-json/wp/v2/posts?page=${page}&per_page=30`);
     const newSermons = await res.json();
     setSermons(prevSermons => [...prevSermons, ...newSermons]);
     console.log(newSermons)
@@ -51,11 +51,10 @@ export default function BlogCards({mode, value}) {
               <p className="text-3xl font-semibold" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></p>
             </div>
 
-            <p>By: {speaker ? speaker.name : "Unknown"}</p>
+            <p>By: {sermon.categories.includes(7) ? "Brandon Rhea" : "Robert Price"}</p>
 
-            <div className="flex gap-0.5 text-white"> 
-              <a href={sermon.source_url} target="_blank"><div className="bg-primary px-4 py-2 rounded-l-md">Listen</div></a>
-              <a href={`/api/download?src=${encodeURIComponent(sermon.source_url)}`}><div className="bg-primary px-4 py-2 rounded-r-md">Download</div></a>
+            <div className="flex">
+              <img src="/imgs/Bible-Icon-1.svg" alt="" />
             </div>
 
           </div>
