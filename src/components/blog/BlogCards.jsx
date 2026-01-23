@@ -44,7 +44,7 @@ export default function BlogCards({mode, value}) {
         {sermons.map(sermon => {
           const speaker = speakers.find(s => s.id === sermon.author);
         return(
-          <div key={sermon.id} className={'w-full bg-white rounded-md p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
+          <a href={`/blog/${sermon.slug}`} key={sermon.id} className={'w-full bg-white rounded-md p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
             <div className="flex flex-col gap-1">
               <p className=" font-extralight">{format(parseISO(sermon.date), "MMM d, yyyy")}</p>
               <p className="text-3xl font-semibold" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></p>
@@ -54,7 +54,7 @@ export default function BlogCards({mode, value}) {
 
             <p dangerouslySetInnerHTML={{ __html: sermon.excerpt.rendered }}></p>
 
-          </div>
+          </a>
         )})}
 
 
