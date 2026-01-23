@@ -1,0 +1,82 @@
+---
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import Layout from '../../layouts/Layout.astro';
+import BlogCards from "../../components/blog/BlogCards.jsx";
+import CategorySelection from "../../components/blog/CategorySelection.jsx";
+import SpeakerSelection from "../../components/blog/SpeakerSelection.jsx";
+const params = Astro.url.searchParams;
+
+const mode =
+  params.get('search') && 'search' ||
+  params.get('speaker') && 'speaker' ||
+  params.get('series') && 'series' ||
+  params.get('selection') && 'selection' ||
+  'all'
+
+const value =
+  params.get('search') ||
+  params.get('speaker') ||
+  params.get('series') ||
+  params.get('selection') ||
+  'all'
+---
+<Layout>
+  <main class="w-full flex flex-col place-items-center mx-auto bg-primary-light min-h-screen">
+    <div class="w-10/12 flex flex-col place-items-center">
+
+    <div class="flex justify-center place-items-center w-full h-[30vh]  bg-primary text-white rounded-b-xl">
+      <h1 class="text-5xl">{params.get('title')?.toUpperCase() ?? "BLOG"}</h1>
+    </div>
+
+    <div class="flex place-items-start w-[92%] gap-8 -mt-10">
+
+      <div class="flex flex-col gap-4 bg-white rounded-md shadow-lg drop-shadow-lg flex-2 p-10">
+        <div class="flex gap-4 border-b-2 border-accent py-2 px-2 mb-2">
+          <FontAwesomeIcon icon={faMagnifyingGlass}  transform={"down-4"} />
+          <input id="search-input" class="active:border-none" type="text" placeholder="Search">
+        </div>
+        <p class="text-2xl">Index</p>
+        <a href={"/blog"}><p class="text-xl text-primary-dark indent-4 cursor-pointer">All</p></a>
+        <a href={`/blog?selection=series&title=Series`}><p class="text-xl text-primary-dark indent-4 cursor-pointer">Series</p></a>
+        <!-- <a href={`/blog?selection=speaker&title=Speakers`}><p class="text-xl text-primary-dark indent-4 cursor-pointer">Speaker</p></a> -->
+      </div>
+
+      <div class="flex-7">
+        {
+          mode == "selection" 
+          ? value == "series"
+          ? <CategorySelection value={value} client:load />
+          : <SpeakerSelection client:load />
+          : <BlogCards mode={mode} value={value} client:load />
+        }
+      </div>
+
+    </div>
+
+    </div>
+  </main>
+</Layout>
+
+<style>
+  input:focus,
+  input:active {
+    outline: none;
+    box-shadow: none;
+  }
+</style>
+
+<script>
+  const input = document.getElementById("search-input");
+
+  const handleSearch = () => {
+    const query = input.value.trim();
+    if (!query) return;
+    // Navigate to the blog page with the search query
+    window.location.href = `/blog?search=${encodeURIComponent(query)}`;
+  };
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") handleSearch();
+  });
+</script>
