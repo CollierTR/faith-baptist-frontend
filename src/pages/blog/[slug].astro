@@ -12,15 +12,33 @@ const post = posts[0];
   <main class="w-full flex flex-col place-items-center mx-auto bg-primary-light min-h-screen">
     {post ? (
       <article class="w-10/12 flex flex-col place-items-center">
-        <div class="flex justify-center place-items-center w-full h-auto py-10 bg-primary text-white rounded-b-xl">
-          <h1 class="text-5xl text-center" set:html={post.title.rendered}></h1>
+
+        <div class="w-full bg-white shadow-lg drop-shadow-lg py-10">
+
+        <!-- SECT: Title here -->
+        <div class="flex justify-center place-items-center  h-auto py-10 mb-8 text-balance rounded-b-xl">
+          <h1 class="text-6xl title font-serif text-primary-dark  text-center w-10/12" set:html={post.title.rendered}></h1>
         </div>
-        <div class="w-[92%] bg-white rounded-md shadow-lg drop-shadow-lg -mt-10 p-10">
-          <p class="text-center text-gray-600 mb-4">
+
+
+         <!-- SECT: date here -->
+        <div class="flex justify-between w-10/12 mx-auto px-8">
+          <p class="text-center text-xl text-gray-600 ">
             {format(parseISO(post.date), "MMMM d, yyyy")}
           </p>
-          <div class="prose max-w-none" set:html={post.content.rendered} />
+          <p class="text-center text-xl text-gray-600 ">
+            {post.author == 1 ? "Brandon Rhea" : "Robert Price"}
+          </p>
         </div>
+
+        <!-- SECT: Divider -->
+          <div class="bg-primary-dark w-10/12 h-1 mx-auto my-10"></div>
+
+          <!-- SECT: content here -->
+        <div class="prose text-xl max-w-none w-10/12 mx-auto" set:html={post.content.rendered} />
+        </div>
+
+
       </article>
     ) : (
       <p>Loading post...</p>
@@ -28,9 +46,8 @@ const post = posts[0];
   </main>
 </Layout>
 
-<style is:global>
+<style >
   .prose {
-    font-size: 1.125rem;
     line-height: 1.75;
   }
 
@@ -38,9 +55,9 @@ const post = posts[0];
     margin-bottom: 1rem;
     font-weight: 700;
   }
-  .prose h1 { font-size: 2.5rem; }
-  .prose h2 { font-size: 2rem; }
-  .prose h3 { font-size: 1.75rem; }
+  .prose h1 { font-size: 2.5rem; color: red; }
+  .prose h2 { font-size: 2rem; color: green; }
+  .prose h3 { font-size: 1.75rem; color: blue; }
 
   .prose p {
     margin-bottom: 1.5rem;
@@ -61,4 +78,14 @@ const post = posts[0];
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
+
+  .title {
+    word-break: keep-all;
+    overflow-wrap: normal;
+    hyphens: none;
+  }
+
 </style>
+
+
