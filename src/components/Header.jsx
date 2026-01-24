@@ -13,9 +13,14 @@ export default function Header({ path }) {
   return (
     <div className="p-3 flex justify-between place-items-center relative shadow-md">
       <div>
+        <div className="w-[55px]">
+          <img src="/imgs/Church-Logo-Color.png"/>
+        </div>
+        {/*
         <h1 className="text-lg text-accent lg:text-2xl text-nowrap font-serif">
           <a href="/">FAITH BAPTIST CHURCH</a>
         </h1>
+        */}
       </div>
 
       {/* sect: Desktop display only */}
