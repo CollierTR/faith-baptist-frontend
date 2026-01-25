@@ -1,5 +1,43 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+
+const links = [
+  {
+    title: "The Master's Seminary",
+    description: "Faith Baptist Church is a TMS-friendly church.",
+    url: "http://www.tms.edu/",
+  },
+  {
+    title: "Grace to You",
+    description: "The preaching ministry of John MacArthur.",
+    url: "http://www.gty.org/",
+  },
+  {
+    title: "9 Marks",
+    description: "A ministry dedicated to equipping church leaders with a biblical vision and practical resources for displaying God’s glory to the nations through healthy churches.",
+    url: "http://www.9marks.org/",
+  },
+  {
+    title: "The Association of Certified Biblical Counselors",
+    description: "ACBC is a fellowship of Christian pastors and laymen who have banded together to promote excellence in biblical counseling.",
+    url: "http://www.biblicalcounseling.com/",
+  },
+  {
+    title: "The Council on Biblical Manhood and Womanhood",
+    description: "The Council on Biblical Manhood and Womanhood is a partnership of men and women who have stood for the Complementarian position for more than 25 years.",
+    url: "http://cbmw.org/",
+  },
+  {
+    title: "The Gospel Coalition",
+    description: "The Gospel Coalition is a fellowship of evangelical churches in the Reformed tradition deeply committed to renewing our faith in the gospel of Christ and to reforming our ministry practices to conform fully to the Scriptures.",
+    url: "http://www.thegospelcoalition.org/",
+  },
+  {
+    title: "Founders",
+    description: "Founders Ministries is a ministry of teaching and encouragement that is committed to the recovery of the gospel and the biblical reformation of local churches.",
+    url: "http://www.founders.org/",
+  },
+];
 ---
 
 <Layout>
@@ -11,47 +49,13 @@ import Layout from '../../layouts/Layout.astro';
 Although Faith Baptist believes the sites below to be trustworthy and beneficial, we do not necessarily endorse all the beliefs promoted on them.</p>
 
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">The Master's Seminary</h2>
-          <p class="text-gray-700 mb-4">Faith Baptist Church is a TMS-friendly church.</p>
-          <a href="http://www.tms.edu/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">Grace to You</h2>
-          <p class="text-gray-700 mb-4">The preaching ministry of John MacArthur.</p>
-          <a href="http://www.gty.org/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">9 Marks</h2>
-          <p class="text-gray-700 mb-4">A ministry dedicated to equipping church leaders with a biblical vision and practical resources for displaying God’s glory to the nations through healthy churches.</p>
-          <a href="http://www.9marks.org/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">The Association of Certified Biblical Counselors</h2>
-          <p class="text-gray-700 mb-4">ACBC is a fellowship of Christian pastors and laymen who have banded together to promote excellence in biblical counseling.</p>
-          <a href="http://www.biblicalcounseling.com/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">The Council on Biblical Manhood and Womanhood</h2>
-          <p class="text-gray-700 mb-4">The Council on Biblical Manhood and Womanhood is a partnership of men and women who have stood for the Complementarian position for more than 25 years.</p>
-          <a href="http://cbmw.org/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">The Gospel Coalition</h2>
-          <p class="text-gray-700 mb-4">The Gospel Coalition is a fellowship of evangelical churches in the Reformed tradition deeply committed to renewing our faith in the gospel of Christ and to reforming our ministry practices to conform fully to the Scriptures.</p>
-          <a href="http://www.thegospelcoalition.org/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
-
-        <div class="bg-white p-6 rounded-lg shadow-md">
-          <h2 class="text-2xl font-bold text-primary-dark mb-2">Founders</h2>
-          <p class="text-gray-700 mb-4">Founders Ministries is a ministry of teaching and encouragement that is committed to the recovery of the gospel and the biblical reformation of local churches.</p>
-          <a href="http://www.founders.org/" target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
-        </div>
+        {links.map(link => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-primary-dark mb-2">{link.title}</h2>
+            <p class="text-gray-700 mb-4">{link.description}</p>
+            <a href={link.url} target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
+          </div>
+        ))}
       </div>
     </div>
   </main>
