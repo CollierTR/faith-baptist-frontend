@@ -15,8 +15,8 @@ export default function Header({ path }) {
       text: "Resources",
       subLinks: [
         { href: "/resources/links", text: "Links" },
-        { href: "/resources/hymn-app", text: "Hymn App" },
-        { href: "/resources/counseling", text: "Counseling" },
+        { href: "https://classichymns.org/", text: "Hymn App" },
+        { href: "/resources/counseling", text: "Biblical Counseling" },
       ],
     },
     { href: "/about", text: "About" },
@@ -46,12 +46,12 @@ export default function Header({ path }) {
               {link.text}
             </a>
             {link.subLinks && (
-              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-0 py-2 w-40 z-10">
+              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-0 py-2 w-fit z-10">
                 {link.subLinks.map((subLink) => (
                   <a
                     key={subLink.href}
                     href={subLink.href}
-                    className="block px-4 py-2 text-primary-dark hover:bg-gray-100"
+                    className="block px-4 py-2 text-primary-dark text-nowrap hover:bg-gray-100"
                   >
                     {subLink.text}
                   </a>
