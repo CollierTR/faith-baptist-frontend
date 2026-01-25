@@ -14,6 +14,7 @@ export default function Header({ path }) {
       href: "/resources",
       text: "Resources",
       subLinks: [
+        { href: "/blog", text: "Blog" },
         { href: "/resources/links", text: "Links" },
         { href: "https://classichymns.org/", text: "Hymn App" },
         { href: "/resources/counseling", text: "Biblical Counseling" },

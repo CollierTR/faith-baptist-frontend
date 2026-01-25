@@ -16,7 +16,7 @@ curl -s https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?per_pa
 
 - [ ] Resources
   - [ ] Links
-  - [ ] Hymn App
+  - [x] Hymn App
   - [ ] Counciling
     - [ ] What is BC?
     - [ ] Do you need BC?
