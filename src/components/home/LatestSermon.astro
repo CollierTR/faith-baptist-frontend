@@ -3,10 +3,16 @@ import DoubleTitle from '../DoubleTitle.astro'
 import FeaturedSermonCard from './FeaturedSermonCard.astro'
 ---
 
-<section class="">
+<section class="flex flex-col justify-center place-items-center gap-12 py-16">
+
+
   <DoubleTitle topText="Latest Sermons" bottomText="Sola Scriptura"/>
+
   <FeaturedSermonCard />
-  <div class="flex justify-center py-12 font-medium underline underline-offset-2">
+
+  <div class="flex justify-center font-medium underline underline-offset-2">
     <a href="/sermons">More Sermons</a>
   </div>
+
+
 </section>

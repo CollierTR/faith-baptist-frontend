@@ -22,8 +22,6 @@ curl -s https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?per_pa
     - [ ] Do you need BC?
     - [ ] BC Resources
 
-- [ ] Blog (just like the Sermon page)
-
 # To-do for Cliff
 - Need to re-date the blog articles if possible (I can do this if needed)
 - Need to expose a speaker attribute as an extension in the api
