@@ -1,100 +1,113 @@
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import { faX } from "@fortawesome/free-solid-svg-icons";
 
 export default function Header({ path }) {
   const isActive = (href) =>
-    href === "/"
-      ? path === "/"
-      : path.startsWith(href);
+    href === "/" ? path === "/" : path.startsWith(href);
   const [navOpen, toggleNav] = useState(false);
 
+  const navLinks = [
+    { href: "/", text: "Home" },
+    { href: "/sermons", text: "Sermons" },
+    {
+      href: "/resources",
+      text: "Resources",
+      subLinks: [
+        { href: "/resources/links", text: "Links" },
+        { href: "/resources/hymn-app", text: "Hymn App" },
+        { href: "/resources/counseling", text: "Counseling" },
+      ],
+    },
+    { href: "/about", text: "About" },
+    { href: "/contact", text: "Contact" },
+  ];
+
   return (
-    <div className="p-3 flex justify-between place-items-center relative shadow-md">
-      <div>
-        <div className="w-[55px]">
-          <img src="/imgs/Church-Logo-Color.png"/>
-        </div>
-        {/*
-        <h1 className="text-lg text-accent lg:text-2xl text-nowrap font-serif">
-          <a href="/">FAITH BAPTIST CHURCH</a>
-        </h1>
-        */}
+    <div className="py-3 px-8 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
+      <div className="w-14">
+        <a href="/">
+          <img src="/imgs/Church-Logo-Color.png" alt="Faith Baptist Church Logo" />
+        </a>
       </div>
 
-      {/* sect: Desktop display only */}
-      <div className="text-xl text-primary-dark">
-        <div className="lg:flex gap-5 hidden font-serif">
-          <a href="/" className={ isActive("/") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
-            Home
-          </a>
-          <a href="/sermons" className={ isActive("/sermons") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
-            Sermons
-          </a>
-          <a href="/about" className={ isActive("/about") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
-            About
-          </a>
-          <a href="/contact" className={ isActive("/contact") ? "underline underline-offset-4 decoration-accent decoration-2" : "" }>
-            Contact
-          </a>
-        </div>
-         {/* <FontAwesomeIcon
-          onClick={() => {
-            toggleNav(true);
-          }}
-          icon={faBars}
-          className="inline-block hover:text-secondary-dark cursor-pointer hidden"
-        /> */}
-      </div>
-
-      {
-        // sect: This is for the Hamburger Menu
-        navOpen && (
-          <div className="parchment-background text-primary-dark text-xl lg:text-2xl absolute rounded-2xl flex flex-col gap-3 top-0 right-0 pb-3 drop-shadow-xl">
-            <div className="flex justify-end text-2xl pr-3 pt-4 hover:text-red-400">
-              <FontAwesomeIcon
-                onClick={() => {
-                  toggleNav(false);
-                }}
-                icon={faX}
-                className="cursor-pointer"
-              />
-            </div>
+      {/* Desktop Navigation */}
+      <nav className="hidden lg:flex items-center gap-5 font-serif text-xl text-primary-dark">
+        {navLinks.map((link) => (
+          <div key={link.href} className="relative group">
             <a
-              href="/"
-              className="block lg:hidden px-6 pb-3 hover:text-secondary-dark"
+              href={link.href}
+              className={`${
+                isActive(link.href)
+                  ? "underline underline-offset-4 decoration-accent decoration-2"
+                  : ""
+              } hover:text-secondary-dark py-2`}
             >
-              HOME
+              {link.text}
             </a>
-            <a
-              href="/about"
-              className="block lg:hidden px-6 pb-3 hover:text-secondary-dark"
-            >
-              ABOUT
-            </a>
-            <a
-              href="/sermons"
-              className="block lg:hidden px-6 pb-3 hover:text-secondary-dark"
-            >
-              SERMONS
-            </a>
-            <a
-              href="/biblical-counseling"
-              className="px-6 pb-3 hover:text-secondary-dark"
-            >
-              BIBLICAL COUNSELING
-            </a>
-            <a
-              href="/resources"
-              className="px-6 pb-3 hover:text-secondary-dark"
-            >
-              RESOURCES
-            </a>
-            
+            {link.subLinks && (
+              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-0 py-2 w-40 z-10">
+                {link.subLinks.map((subLink) => (
+                  <a
+                    key={subLink.href}
+                    href={subLink.href}
+                    className="block px-4 py-2 text-primary-dark hover:bg-gray-100"
+                  >
+                    {subLink.text}
+                  </a>
+                ))}
+              </div>
+            )}
           </div>
-        )
-      }
+        ))}
+      </nav>
+
+      {/* Mobile Navigation */}
+      <div className="lg:hidden">
+        <button onClick={() => toggleNav(!navOpen)} className="text-2xl">
+          <FontAwesomeIcon icon={navOpen ? faX : faBars} />
+        </button>
+      </div>
+
+      {navOpen && (
+        <div className="lg:hidden absolute top-full right-0 w-full bg-white shadow-md">
+          <nav className="flex flex-col items-center gap-4 py-4 font-serif text-lg text-primary-dark">
+            {navLinks.map((link) => (
+              <div key={link.href} className="w-full text-center">
+                {link.subLinks ? (
+                  <div className="relative">
+                    <button className="w-full hover:text-secondary-dark">
+                      {link.text}
+                    </button>
+                    <div className="bg-white rounded-md mt-2 py-2 w-full">
+                      {link.subLinks.map((subLink) => (
+                        <a
+                          key={subLink.href}
+                          href={subLink.href}
+                          className="block px-4 py-2 text-primary-dark hover:bg-gray-100"
+                        >
+                          {subLink.text}
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <a
+                    href={link.href}
+                    className={`${
+                      isActive(link.href)
+                        ? "underline underline-offset-4 decoration-accent decoration-2"
+                        : ""
+                    } w-full block hover:text-secondary-dark`}
+                  >
+                    {link.text}
+                  </a>
+                )}
+              </div>
+            ))}
+          </nav>
+        </div>
+      )}
     </div>
   );
 }

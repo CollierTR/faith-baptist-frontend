@@ -1,41 +1,56 @@
-# Project Overview
+# GEMINI.md
 
-This is a website for Faith Baptist Church, built with the [Astro](https://astro.build/) web framework. It uses [React](https://react.dev/) for interactive components and [Tailwind CSS](https://tailwindcss.com/) for styling.
+## Project Overview
 
-The project is structured as a standard Astro project:
-- `src/pages` contains the pages of the site.
-- `src/components` contains reusable components, a mix of Astro and React components.
-- `src/layouts` contains the main site layout.
-- `astro.config.mjs` contains the Astro configuration, including integrations with React and Tailwind CSS.
+This is the frontend for the Faith Baptist Church website. It is a static site generated with [Astro](https://astro.build/), using [React](https://reactjs.org/) for UI components and [Tailwind CSS](https://tailwindcss.com/) for styling. The site is configured for deployment on [Netlify](https://www.netlify.com/).
 
-# Building and Running
+The project structure follows the standard Astro layout:
 
-To work on this project, you'll need to have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed.
+-   `src/pages`: Contains the pages of the site. Each `.astro` file corresponds to a route.
+-   `src/components`: Contains reusable UI components, written in both Astro and React (`.jsx`).
+-   `src/layouts`: Contains the main layout for the site.
+-   `public`: Contains static assets like images and fonts.
 
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
+## Building and Running
 
-2. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-   This will start a local development server at `http://localhost:4321`.
+The following commands are available to run the project:
 
-3. **Build for production:**
-   ```bash
-   npm run build
-   ```
-   This will create a production-ready build in the `dist/` directory.
+| Command | Action |
+| :--- | :--- |
+| `npm install` | Installs dependencies |
+| `npm run dev` | Starts local dev server at `localhost:4321` |
+| `npm run build` | Build your production site to `./dist/` |
+| `npm run preview` | Preview your build locally, before deploying |
 
-4. **Preview the production build:**
-    ```bash
-    npm run preview
-    ```
+## Development Conventions
 
-# Development Conventions
+-   **Styling**: Styling is done using Tailwind CSS. Global styles are defined in `src/styles/global.css`.
+-   **Components**: Reusable UI components are created in the `src/components` directory. Both Astro components (`.astro`) and React components (`.jsx`) are used.
+-   **Routing**: Routing is handled by Astro's file-based routing system. Each `.astro` file in the `src/pages` directory becomes a page on the site.
+-   **Deployment**: The site is configured for deployment on Netlify. The configuration is in `astro.config.mjs`.
 
-- **Styling:** The project uses Tailwind CSS for styling. Utility classes are preferred over custom CSS.
-- **Components:** Both Astro (`.astro`) and React (`.jsx`) components are used. React components are used for interactive UI elements, such as the mobile navigation menu.
-- **Linting and Formatting:** While no explicit linting or formatting configuration is present, it's recommended to use a tool like [Prettier](https://prettier.io/) to maintain consistent code style.
+## APIs and Future Development
+
+The `notes.md` file contains information about the APIs used in the project and a to-do list for future development.
+
+### API Endpoints
+
+-   **Sermon Categories**: `https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?parent=3&per_page=100`
+
+### To-Do List
+
+-   About
+    -   Download: Constitution
+    -   Page: statement of faith
+-   Resources
+    -   Links
+    -   Hymn App
+    -   Counciling
+        -   What is BC?
+        -   Do you need BC?
+        -   BC Resources
+-   To-do for Cliff
+    -   Need to re-date the blog articles if possible (I can do this if needed)
+    -   Need to expose a speaker attribute as an extension in the api
+    -   Pull in the new sermons
+    -   train Brandon and me on editing the content
