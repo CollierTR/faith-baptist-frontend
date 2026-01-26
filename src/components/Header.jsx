@@ -25,12 +25,22 @@ export default function Header({ path }) {
   ];
 
   return (
-    <div className="py-3 px-8 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
-      <div className="w-14">
+    <div className="py-4 px-8 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
+
+
+      <div className="w-20 relative hidden lg:block">
         <a href="/">
           <img src="/imgs/Church-Logo-Color.png" alt="Faith Baptist Church Logo" />
         </a>
       </div>
+
+
+      <div className="text-2xl text-accent font-serif relative block lg:hidden">
+        <a href="/">
+          <p>Faith Baptist Church</p>
+        </a>
+      </div>
+
 
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center gap-5 font-serif text-xl text-primary-dark">
