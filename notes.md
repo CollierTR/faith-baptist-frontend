@@ -15,7 +15,7 @@ curl -s https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?per_pa
   - [ ] Page: statement of faith
 
 - [ ] Resources
-  - [ ] Links
+  - [x] Links
   - [x] Hymn App
   - [ ] Counciling
     - [ ] What is BC?
