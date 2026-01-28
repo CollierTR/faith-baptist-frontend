@@ -7,48 +7,49 @@ import Button from '../../../components/Button.astro';
   title="Biblical Counseling - FBC"
   description="Learn about Biblical Counseling at Faith Baptist Church in Kirksville, MO. We believe God's Word is sufficient to address all of life's problems."
 >
-  <main class="w-full min-h-screen overflow-y-auto mx-auto">
-    <div class="w-full h-[50vh] bg-primary flex justify-center items-center">
-      <div class="w-11/12 lg:w-8/12 mx-auto text-center">
+<main class="w-full min-h-screen overflow-y-auto mx-auto">
+
+
+
+    <!-- SECT: Header -->
+<div class="w-full lg:w-10/12 max-w-[2000px] mx-auto lg:rounded-b-2xl bg-primary flex justify-center items-center py-20">
         <h1 class="text-4xl lg:text-6xl font-bold text-white">Biblical Counseling</h1>
-        <p class="text-lg text-white mt-4">
-          At Faith Baptist Church, we believe that God's Word is sufficient to address all of life's problems.
-        </p>
-      </div>
     </div>
-    <div class="w-11/12 lg:w-8/12 mx-auto my-10 px-4">
-      <!-- Section 1: What is BC? -->
-      <section class="flex flex-col md:flex-row items-center my-16">
-        <div class="md:w-1/2">
-          <img src="https://via.placeholder.com/600x400/3a5d8a/ffffff?text=Faith" alt="What is Biblical Counseling" class="w-full h-auto rounded-lg shadow-lg object-cover">
-        </div>
-        <div class="md:w-1/2 md:pl-10 mt-5 md:mt-0">
+
+
+
+    <div class="w-10/12 lg:w-10/12 max-w-6xl mx-auto my-10">
+      <!-- SECT: 1: What is BC? -->
+      <section class="flex flex-col gap-6  my-16">
           <h2 class="text-3xl font-bold text-primary">What is Biblical Counseling?</h2>
           <p class="text-lg text-gray-700">
             Biblical Counseling is the process where the Bible, God's Word, is related individually to a person or persons who are struggling under the weight of personal sin and/or the difficulties with suffering, so that he or she might genuinely change in the inner person to be pleasing to God.
           </p>
           <h4 class="text-xl font-bold text-primary mt-4">Three Key Beliefs</h4>
           <p class="text-lg text-gray-700 mt-2">
-              First, we believe that the Bible, given by God, is sufficient for life in that, when properly interpreted, it reveals to the believer all the data necessary for one to understand his need for Christ, how he can please the Lord, and how to live in a God-honoring way regardless of the circumstances whether comfortable or oppressive.
+              <span class="font-semibold">First</span>, we believe that the Bible, given by God, is sufficient for life in that, when properly interpreted, it reveals to the believer all the data necessary for one to understand his need for Christ, how he can please the Lord, and how to live in a God-honoring way regardless of the circumstances whether comfortable or oppressive.
           </p>
           <p class="text-lg text-gray-700 mt-2">
-              Second, the Bible is also the authoritative source with which all truth claims—including claims made by science and history—must be evaluated. As a result, we reject all counseling theories that use presuppositions, principles, and/or methodologies that are inconsistent with the proper interpretation of the biblical text.
+              <span class="font-semibold">Second</span>, the Bible is also the authoritative source with which all truth claims—including claims made by science and history—must be evaluated. As a result, we reject all counseling theories that use presuppositions, principles, and/or methodologies that are inconsistent with the proper interpretation of the biblical text.
           </p>
           <p class="text-lg text-gray-700 mt-2">
-              Third, we believe that genuine heart change is totally dependent on the ministry of the Holy Spirit. Thus, our view of counseling practice includes the importance of prayer, dependence on God, a thorough knowledge of the Word of God, and an understanding of ministering to people.
+              <span class="font-semibold">Third</span>, we believe that genuine heart change is totally dependent on the ministry of the Holy Spirit. Thus, our view of counseling practice includes the importance of prayer, dependence on God, a thorough knowledge of the Word of God, and an understanding of ministering to people.
           </p>
           <p class="text-sm text-gray-500 mt-4">
               Quoted from <a href="https://www.faithlafayette.org/counseling/what-is-biblical-counseling" target="_blank" class="text-primary hover:underline">faithlafayette.org</a>
           </p>
-        </div>
       </section>
 
-      <!-- Section 2: Do you need BC? -->
-      <section class="flex flex-col md:flex-row-reverse items-center my-16">
-        <div class="md:w-1/2">
-          <img src="https://via.placeholder.com/600x400/3a5d8a/ffffff?text=Hope" alt="Do you need Biblical Counseling" class="w-full h-auto rounded-lg shadow-lg object-cover">
-        </div>
-        <div class="md:w-1/2 md:pr-10 mt-5 md:mt-0">
+      <div>
+        <img 
+          class="rounded-xl shadow-lg"
+          src="/imgs/counseling.jpg" 
+          alt="Biblical Counseling Image">
+      </div>
+
+
+      <!-- SECT: 2: Do you need BC? -->
+      <section class="flex flex-col gap-6  my-16">
           <h2 class="text-3xl font-bold text-primary">Do You Need Biblical Counseling?</h2>
           <p class="text-lg text-gray-700">
               Our church offers counseling by trained individuals to help people respond to life's problems from a Biblical perspective.
@@ -75,15 +76,16 @@ import Button from '../../../components/Button.astro';
           <p class="text-lg text-gray-700 mt-2">
               The Bible teaches from Romans 15:4, “For whatever was written in former days was written for our instruction, that through endurance and through the encouragement of the Scriptures we might have hope.” No matter how desperate your situation, the all wise, sovereign, loving God has answers.
           </p>
-        </div>
       </section>
 
-      <!-- Section 3: BC Resources -->
-      <section class="flex flex-col md:flex-row items-center my-16">
-        <div class="md:w-1/2">
-          <img src="https://via.placeholder.com/600x400/3a5d8a/ffffff?text=Resources" alt="Biblical Counseling Resources" class="w-full h-auto rounded-lg shadow-lg object-cover">
+
+
+      <!-- SECT: 3: BC Resources -->
+      <section class="flex flex-col gap-4 xl:gap-0 xl:flex-row items-center my-16">
+        <div class="xl:w-1/2">
+          <img src="/imgs/books.jpg" alt="Biblical Counseling Resources" class="w-full h-auto rounded-lg shadow-lg object-cover">
         </div>
-        <div class="md:w-1/2 md:pl-10 mt-5 md:mt-0">
+        <div class="xl:w-1/2 xl:pl-10 mt-5 xl:mt-0 flex flex-col gap-4">
           <h2 class="text-3xl font-bold text-primary">Biblical Counseling Resources</h2>
           <p class="text-lg text-gray-700">
             Here are a few resources that we recommend for further study on the topic of biblical counseling. For a more complete list, please see our resources page.
@@ -94,10 +96,13 @@ import Button from '../../../components/Button.astro';
               <li>Faith Lafayette Counseling</li>
           </ul>
           <div class="mt-6">
-              <Button text="View All Resources" url="/resources/counseling/resources" isPrimary={true} />
+              <Button text="View All Resources" link="/resources/counseling/resources" isPrimary={true} />
           </div>
         </div>
       </section>
+
+
+
     </div>
   </main>
 </Layout>

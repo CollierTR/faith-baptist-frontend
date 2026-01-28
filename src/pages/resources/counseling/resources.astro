@@ -1,34 +1,69 @@
 ---
 import Layout from '../../../layouts/Layout.astro';
 
+const links = [
+  {
+    title: "Association of Certified Biblical Counselors",
+    description: "ACBC is a fellowship of Christian pastors and laymen who have banded together to promote excellence in biblical counseling.",
+    url: "https://biblicalcounseling.com/",
+  },
+  {
+    title: "Truth in Love Podcast",
+    description: "A podcast from the Association of Certified Biblical Counselors.",
+    url: "https://biblicalcounseling.com/resources/podcast/",
+  },
+  {
+    title: "Faith Lafayette Counseling",
+    description: "Biblical counseling resources from Faith Church in Lafayette, IN.",
+    url: "https://www.faithlafayette.org/counseling",
+  },
+  {
+    title: "Springfield Center for Biblical Counseling",
+    description: "Providing biblical counseling and training in the Springfield, IL area.",
+    url: "https://scbc.sophia.ag/",
+  },
+  {
+    title: "Briarwood Counseling Ministry",
+    description: "The counseling ministry of Briarwood Presbyterian Church.",
+    url: "https://briarwood.org/ministries/counseling/",
+  },
+  {
+    title: "Midwestern Baptist Theological Seminary Biblical Counseling",
+    description: "Information on the Biblical Counseling program at Midwestern Baptist Theological Seminary.",
+    url: "https://www.mbts.edu/degrees/biblical-counseling/",
+  },
+  {
+    title: "The Master's University Biblical Counseling",
+    description: "Information on the Biblical Counseling program at The Master's University.",
+    url: "https://www.masters.edu/programs/biblical-counseling",
+  },
+  {
+    title: "ACBC Recommended Books",
+    description: "A list of recommended books on biblical counseling from the ACBC.",
+    url: "https://biblicalcounseling.com/book-reviews/",
+  },
+];
 ---
 
 <Layout
   title="Counseling Resources - FBC"
   description="A list of recommended resources for Biblical Counseling."
 >
-  <main class="w-full min-h-screen overflow-y-auto mx-auto">
-    <div class="w-full h-[50vh] bg-primary flex justify-center items-center">
-      <div class="w-11/12 lg:w-8/12 mx-auto text-center">
-        <h1 class="text-4xl lg:text-6xl font-bold text-white">Counseling Resources</h1>
-        <p class="text-lg text-white mt-4">
-          Listed below are ministries with whom we would agree or recommend for more information on Biblical Counseling.
-        </p>
+  <main class="w-full min-h-screen bg-primary-light overflow-y-auto mx-auto py-12 px-4 sm:px-6 lg:px-8">
+    <div class="max-w-10/12 mx-auto">
+      <h1 class="text-4xl font-bold text-center mb-12">Counseling Resources</h1>
+
+      <p class="text-xl text-center mb-12">Listed below are ministries with whom we would agree or recommend for more information on Biblical Counseling.</p>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        {links.map(link => (
+          <div class="bg-white p-6 rounded-lg shadow-md">
+            <h2 class="text-2xl font-bold text-primary-dark mb-2">{link.title}</h2>
+            <p class="text-gray-700 mb-4">{link.description}</p>
+            <a href={link.url} target="_blank" class="text-secondary-dark hover:underline">Visit Site &rarr;</a>
+          </div>
+        ))}
       </div>
-    </div>
-    <div class="w-11/12 lg:w-8/12 mx-auto my-10 px-4">
-      <h2 class="text-3xl font-bold text-primary">Recommended Resources</h2>
-      <ul class="list-disc list-inside mt-4 text-lg text-gray-700 space-y-2">
-        <li><a href="https://biblicalcounseling.com/" target="_blank" class="text-primary hover:underline">Association of Certified Biblical Counselors</a></li>
-        <li><a href="https://biblicalcounseling.com/resources/podcast/" target="_blank" class="text-primary hover:underline">Truth in Love Podcast</a></li>
-        <li><a href="https://www.faithlafayette.org/counseling" target="_blank" class="text-primary hover:underline">Faith Lafayette Counseling</a></li>
-        <li><a href="https://scbc.sophia.ag/" target="_blank" class="text-primary hover:underline">Springfield Center for Biblical Counseling</a></li>
-        <li><a href="https://briarwood.org/ministries/counseling/" target="_blank" class="text-primary hover:underline">Briarwood Counseling Ministry</a></li>
-        <li>Grace Fellowship Counseling</li>
-        <li><a href="https://www.mbts.edu/degrees/biblical-counseling/" target="_blank" class="text-primary hover:underline">Midwestern Baptist Theological Seminary Biblical Counseling</a></li>
-        <li><a href="https://www.masters.edu/programs/biblical-counseling" target="_blank" class="text-primary hover:underline">Master's University Biblical Counseling</a></li>
-        <li><a href="https://biblicalcounseling.com/book-reviews/" target="_blank" class="text-primary hover:underline">ACBC Recommended Books</a></li>
-      </ul>
     </div>
   </main>
 </Layout>
