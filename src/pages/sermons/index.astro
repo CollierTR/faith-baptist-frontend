@@ -29,9 +29,9 @@ const value =
       <h1 class="text-5xl">{params.get('title')?.toUpperCase() ?? "SERMONS"}</h1>
     </div>
 
-    <div class="flex place-items-start w-[92%] gap-8 -mt-10">
+    <div class="flex flex-col xl:flex-row place-items-start w-[92%] gap-8 -mt-10">
 
-      <div class="flex flex-col gap-4 bg-white rounded-md shadow-lg drop-shadow-lg flex-2 p-10">
+      <div class="flex flex-col gap-4 bg-white rounded-md shadow-lg drop-shadow-lg w-full xl:w-1/4 p-10">
         <div class="flex gap-4 border-b-2 border-accent py-2 px-2 mb-2">
           <FontAwesomeIcon icon={faMagnifyingGlass}  transform={"down-4"} />
           <input id="search-input" class="active:border-none" type="text" placeholder="Search">
@@ -42,7 +42,7 @@ const value =
         <!-- <a href={`/sermons?selection=speaker&title=Speakers`}><p class="text-xl text-primary-dark indent-4 cursor-pointer">Speaker</p></a> -->
       </div>
 
-      <div class="flex-7">
+      <div class="w-full xl:w-3/4">
         {
           mode == "selection" 
           ? value == "series"
