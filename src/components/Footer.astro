@@ -6,41 +6,50 @@ import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
 ---
 
-<footer class="flex bg-primary justify-between p-5 text-background">
-  <div class="flex place-items-end text-xl gap-2 cursor-pointer flex-1">
+<footer class="flex bg-primary border-t-8 border-primary-dark justify-between p-5 text-background">
+
+
+
+  <div class="flex place-items-end text-xl gap-6 cursor-pointer flex-1">
     <div class="hover:text-accent">
       <a href="https://www.facebook.com/faithbaptistkv" target="_blank">
-      <FontAwesomeIcon icon={faFacebook} />
+      <FontAwesomeIcon size='lg' icon={faFacebook} />
       </a>
     </div>
     <div class="hover:text-accent">
       <a href="tel:+16606651622">
-      <FontAwesomeIcon icon={faPhone} />
+      <FontAwesomeIcon size='lg' icon={faPhone} />
       </a>
     </div>
     <div class="hover:text-accent">
       <a href="mailto:faithbaptistkv@gmail.com">
-      <FontAwesomeIcon icon={faEnvelope} />
+      <FontAwesomeIcon size='lg' icon={faEnvelope} />
       </a>
     </div>
     <div class="hover:text-accent">
       <a href="https://maps.app.goo.gl/heG1FVPCCRnGDpm7A" target="_blank">
-      <FontAwesomeIcon icon={faLocationDot} />
+      <FontAwesomeIcon size='lg' icon={faLocationDot} />
       </a>
     </div>
   </div>
-  <div class="flex flex-col items-center flex-1">
-    <div class="w-[80px]">
-    <img src="/imgs/Church-Logo-Monochrome.png">
+
+
+
+  <div class="flex flex-col gap-4 items-center flex-1">
+    <div class="w-[120px]">
+    <img src="/imgs/Church-Logo-White.png">
     </div>
-    <p class="italic pt-5 font-serif">"Speaking the truth in love."</p>
+    <p class="italic pt-5 text-xl font-serif">"Speaking the truth in love."</p>
     <div class="pt-5">
-      <div class="lg:flex gap-5 hidden font-serif">
+      <div class="lg:flex text-lg gap-5 hidden font-serif">
           <a href="/" class="hover:accent hover:underline hover:decoration-accent underline-offset-4 decoration-2 transition-colors">
             Home
           </a>
           <a href="/sermons" class="hover:accent hover:underline hover:decoration-accent underline-offset-4 decoration-2 transition-colors">
             Sermons
+          </a>
+          <a href="/resources" class="hover:accent hover:underline hover:decoration-accent underline-offset-4 decoration-2 transition-colors">
+            Resources
           </a>
           <a href="/about" class="hover:accent hover:underline hover:decoration-accent underline-offset-4 decoration-2 transition-colors">
             About
@@ -51,9 +60,14 @@ import { faLocationDot } from '@fortawesome/free-solid-svg-icons';
         </div>
     </div>
   </div>
+
+
+
   <div class="flex place-items-end justify-end font-serif flex-1">
     <p>&#xA9 2026 All rights reserved</p>
   </div>
+
+
   
 </footer>
 
