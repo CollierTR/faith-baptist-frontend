@@ -1,42 +1,17 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import AboutUs from '../components/home/AboutUs.astro';
+import MeetingTimes from '../components/home/MeetingTimes.astro'
+import OurHistory from '../components/home/OurHistory.astro'
 ---
 
 <Layout>
   <main class="min-h-screen">
-  <div class="bg-primary rounded-2xl w-10/12 mx-auto my-15">
-    <p class="p-15 text-white">Dear Friends,<br/>
-      <br/>
-      On behalf of our Church, welcome to our website.<br/>
-      Faith Baptist Church is a Confessional, Reformed, Baptist congregation. As a Confessional church, we adhere to the New Hampshire Confession 
-      of Faith as the best summary for the teaching found in the Bible and to the five Solas of the Reformation. As a Reformed church, we believe in the doctrines 
-      of grace and have traditional worship focused on prayer, hymn and Psalm singing, Scripture reading, observing the ordinances, and preaching. As a Baptist church, 
-      we believe that only regenerate individuals should be baptized by immersion and that the local congregation is autonomous. We trace our heritage back to the 
-      Particular Baptists in the 17th Century of England. Our church shares similar doctrinal beliefs with Andrew Fuller, William Carey, and Charles Spurgeon.<br/>
-      This Church’s goal is to have the Biblical teaching warm our hearts to worship God and tell others about Him. We accomplish it by preaching God’s Word with 
-      application to our soul. Through preaching Christ crucified, prayer, and loving one another, Jesus Christ will build His Church for His glory.<br/>
-      I invite you to come to our Sunday service at 11:00am. We would enjoy meeting you and answering any questions.<br/>
-      <br/>
-      In Christ,<br/>
-      Pastor Brandon Rhea</p>
-  </div>
-
-  <section class="flex flex-col justify-center place-items-center text-center border border-secondary-dark rounded-xl overflow-hidden my-20 w-10/12 mx-auto">
-    <div id="parent-container" class="w-full flex flex-col justify-center place-items-center min-h-80">
-      <h1 class="text-6xl lg:text-5xl p-3">OUR HISTORY</h1>
-      <p class="text-xl"> In 1978, Faith Baptist Church started meeting in <br/>homes. The Hardens, Webbers, and Walkers served <br/> the founding members. 
-        The church eventually <br/>rented the upstairs of Slaughter Printing to hold their <br/>meetings. When the Church of God built a new <br/>building on the 
-        south side of Kirksville, Faith Baptist <br/>Church bought their old building which is the church’s <br/>current location. </p>
-    </div>
-  </section>
-  <style>
-    #parent-container {
-      background-image: url("https://placehold.co/600x400.png");
-      background-position: center center;
-      background-size: cover;
-  }
-  </style>
-
+  
+  <AboutUs />
+  <MeetingTimes />
+  <OurHistory />
+  
   <div>
     <p class="w-10/12 mx-auto my-15">Taken from our church constitution, our statement of purpose is as follows:<br/>
     <br/>
