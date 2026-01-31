@@ -2,21 +2,21 @@
 import Button from "../Button.astro"
 ---
 
-<section class="flex flex-row bg-primary justify-center place-items-center p-12 text-white border-t-4 border-b-4 border-black gap-80">  
-    <div class="flex flex-col font-serif">
+<section class="flex flex-col-reverse lg:flex-row bg-primary justify-center items-center p-12 text-white border-t-4 border-b-4 border-black gap-8 lg:gap-40 xl:gap-80">  
+    <div class="flex flex-col font-serif text-center md:text-left">
         <h1 class="text-3xl pb-4">Our Location</h1>
         <p class="text-lg pb-4">502 N Florence</p>
         <p class="text-lg pb-4">Kirksville, MO 63501</p>
         <a href="https://maps.app.goo.gl/o3uWupY3CANvRvWs7" target="_blank">
-            <button class="bg-primary-dark text-lg px-6 cursor-pointer py-1 border-black border-2 rounded-lg">
+            <button class="bg-primary-dark text-lg px-6 cursor-pointer py-1 border-black border-2 rounded-lg mx-auto md:mx-0">
             Directions
             </button>
         </a>
     </div>
-    <div class="rounded-2xl overflow-hidden border-3 border-black">
+    <div class="rounded-2xl overflow-hidden border-3 border-black w-full max-w-lg md:max-w-[450px]">
         <iframe 
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1077.4559702470485!2d-92.57917160364357!3d40.19781283092749!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x87e80e80066212c9%3A0x7163cd83d9b8ea3d!2sFaith%20Baptist%20Church!5e0!3m2!1sen!2sus!4v1768531672898!5m2!1sen!2sus" 
-            class="w-[450px] h-[300px] border-0" 
+            class="w-full h-[250px] md:w-[450px] md:h-[300px] border-0" 
             style="border:0;" 
             allowfullscreen="" 
             loading="lazy" 
