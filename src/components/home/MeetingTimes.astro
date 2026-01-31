@@ -2,14 +2,14 @@
 import DoubleTitle from '../DoubleTitle.astro'
 import TimeComponent from './TimeComponent.astro'
 ---
-<section class="my-16 flex flex-col justify-center place-items-center gap-10">
+<section class="my-16 flex flex-col justify-center place-items-center gap-6 lg:gap-10">
   <DoubleTitle topText="Meeting Times" bottomText="Join us in Worship" />
-  <div class="flex flex-row justify-center gap-65 ">
+  <div class="flex flex-col lg:flex-row justify-center lg:gap-40 xl:gap-65 ">
     <TimeComponent title="Sunday School" day="Sunday" time="10am"/>
     <TimeComponent title="Main Service" day="Sunday" time="11am"/>
     <TimeComponent title="Prayer Meeting" day="Wednesday" time="7pm"/>
   </div>
   <div class="flex justify-center pb-12">
-    <p class="text-xl font-semibold font-serif">Join us for  our Fellowship Meal after the Main Service!</p>
+    <p class="px-10 lg:text-xl font-semibold font-serif text-center lg:text-left">Join us for  our Fellowship Meal after the Main Service!</p>
   </div>
 </section>
