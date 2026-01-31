@@ -1,0 +1,17 @@
+---
+const { image="/imgs/Brandon.jpg", width="40px", name="Brandon Rhea", text="In 1978, Faith Baptist Church started meeting in homes. The Hardens, Webbers, and Walkers served as the founding members. The church eventually rented the upstairs of Slaughter Printing to hold their meetings. When the Church of God built a new building on the south side of Kirksville, Faith Baptist Church bought their old building which is the church’s current location. "} = Astro.props;
+---
+
+<div class="flex flex-row justify-center rounded-2xl">
+  <div class="w-xl">
+    <img src={image} width={width}/>
+  </div>
+  <div class="flex flex-col place-items-center px-5 font-serif justify-center bg-primary-light">
+    <div>
+        <h2 class="text-2xl">{name}</h2>
+        </div>
+        <div class="">
+        <p class="text-lg"> {text}</p>
+    </div>
+  </div>
+</div>
