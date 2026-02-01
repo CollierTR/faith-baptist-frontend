@@ -1,19 +1,50 @@
 ---
-const { title="The Preeminence of Christ", passage="Colossians 1:16-17"} = Astro.props;
+const { 
+    title="The Preeminence of Christ in Saving Sinners from Damnation", 
+    passage="Colossians 1:16-17",
+    imgSrc = "/imgs/brandon-preaching.JPG",
+    imgAlt = "Pastor Brandon preahing",
+    listenUrl = "#",
+    downloadUrl = "#"
+} = Astro.props;
 import Button from "../Button.astro";
 ---
 
-<div class="flex flex-row justify-center rounded-2xl">
-  <div class="w-xl">
-    <img src="/imgs/bible.png"/>
-  </div>
-  <div class="flex flex-col place-items-center px-5 font-serif justify-center bg-primary-light">
-    <div>
-    <h2 class="text-2xl">{title}</h2>
+<div class="w-full max-w-11/12 lg:max-w-[800px]  bg-amber-700 rounded-xl overflow-hidden ">
+  <div class="grid grid-cols-1 md:grid-cols-2">
+    <!-- IMAGE -->
+    <div class="aspect-video md:aspect-auto w-full bg-gray-300 overflow-hidden">
+      <img
+        src={imgSrc}
+        alt={imgAlt}
+        class="h-full w-full object-cover"
+      />
     </div>
-    <div class="border-t-2">
-    <p class="text-lg">{passage}</p>
-    <Button text="Play"/>
+
+    <!-- CONTENT -->
+    <div class="flex flex-col gap-4 p-8 font-serif justify-center text-center bg-primary-light">
+      <h2 class="text-3xl md:text-4xl text-balance">{title}</h2>
+
+      <div class="w-full h-0.5 bg-primary-dark"></div>
+
+      <p class="text-xl md:text-2xl">{passage}</p>
+
+      <div class="flex gap-4 justify-center mt-4">
+
+          <div class="flex gap-0.5 text-white"> 
+            <a href={"#"} target="_blank">
+              <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-l-md">
+                Listen
+              </div>
+            </a>
+            <a href={"#"}>
+              <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-r-md">
+                Download
+              </div>
+            </a>
+          </div>
+
+      </div>
     </div>
   </div>
 </div>
