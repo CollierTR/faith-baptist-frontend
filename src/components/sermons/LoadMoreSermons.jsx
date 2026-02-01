@@ -51,7 +51,8 @@ export default function LoadMoreSermons({mode, value}) {
               <p className="text-3xl font-semibold" dangerouslySetInnerHTML={{ __html: sermon.title.rendered }}></p>
             </div>
 
-            <p>By: {speaker ? speaker.name : "Unknown"}</p>
+            <p>By: Brandon Rhea{/*speaker ? speaker.name : "Unknown"*/}
+              </p>
 
             <div className="flex gap-0.5 text-white"> 
               <a href={sermon.source_url} target="_blank"><div className="bg-primary px-4 py-2 rounded-l-md">Listen</div></a>

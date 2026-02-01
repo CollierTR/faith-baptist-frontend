@@ -1,60 +1,92 @@
----
-import { format, parseISO } from 'date-fns';
 
-const API_URL = `https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=1&orderby=date&categories=3&order=desc`;
-
-
-const res = await fetch(API_URL);
-if (!res.ok) {
- throw new Error("Failed to fetch latest sermon");
-}
-
-const sermon = await res.json();
-
-
-const { 
-    title= sermon[0].title.rendered ?? "The Preeminence of Christ in Saving Sinners from Damnation", 
-    date = sermon[0].date ?? "Colossians 1:16-17",
-    imgSrc = "/imgs/brandon-preaching.JPG",
-    imgAlt = "Pastor Brandon preahing",
-} = Astro.props;
----
-
-<div class="w-full max-w-11/12 lg:max-w-[800px] shadow-xl bg-amber-700 rounded-xl overflow-hidden ">
-  <div class="grid grid-cols-1 md:grid-cols-2">
-    <!-- IMAGE -->
-    <div class="aspect-video md:aspect-auto w-full bg-gray-300 overflow-hidden">
-      <img
-        src={imgSrc}
-        alt={imgAlt}
-        class="h-full w-full object-cover"
-      />
-    </div>
-
-    <!-- CONTENT -->
-    <div class="flex flex-col gap-4 p-8 font-serif justify-center text-center bg-primary-light">
-      <h2 class="text-3xl md:text-4xl text-balance">{title}</h2>
-
-      <div class="w-full h-0.5 bg-primary-dark"></div>
-
-      <p class="text-xl md:text-2xl">{format(parseISO(date), "MMM d, yyyy")}</p>
-
-      <div class="flex gap-4 justify-center mt-4">
-
-          <div class="flex gap-0.5 text-white"> 
-            <a href={sermon[0].source_url} target="_blank">
-              <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-l-md">
-                Listen
-              </div>
-            </a>
-            <a href={`/api/download?src=${encodeURIComponent(sermon[0].source_url)}`}>
-              <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-r-md">
-                Download
-              </div>
-            </a>
-          </div>
-
-      </div>
-    </div>
+<div
+  id="latest-sermon"
+  class="w-full max-w-11/12 lg:max-w-[800px] shadow-xl bg-amber-700 rounded-xl overflow-hidden"
+>
+  <!-- Fallback / skeleton -->
+  <div class="p-8 text-center font-serif bg-primary-light">
+    <p>Loading latest sermon…</p>
   </div>
 </div>
+
+<script type="module">
+  const API_URL =
+    "https://media.faithbaptistkirksville.org/wp-json/wp/v2/media?per_page=1&orderby=date&categories=3&order=desc";
+
+  const container = document.getElementById("latest-sermon");
+
+  try {
+    const res = await fetch(API_URL);
+    if (!res.ok) throw new Error("Failed to fetch latest sermon");
+
+    const [sermon] = await res.json();
+
+    // ✅ Correct destructuring from API result
+    const title =
+      sermon?.title?.rendered ??
+      "The Preeminence of Christ in Saving Sinners from Damnation";
+
+    const date = sermon?.date ?? new Date().toISOString();
+
+    const formattedDate = new Date(date).toLocaleDateString("en-US", {
+      month: "short",
+      day: "numeric",
+      year: "numeric",
+    });
+
+    const audioUrl = sermon?.source_url ?? "#";
+
+    const imgSrc =
+      sermon?.media_details?.sizes?.large?.source_url ??
+      "/imgs/brandon-preaching.JPG";
+
+    const imgAlt = "Pastor Brandon preaching";
+
+    container.innerHTML = `
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <!-- IMAGE -->
+        <div class="aspect-video md:aspect-auto w-full bg-gray-300 overflow-hidden">
+          <img
+            src="${imgSrc}"
+            alt="${imgAlt}"
+            class="h-full w-full object-cover"
+          />
+        </div>
+
+        <!-- CONTENT -->
+        <div class="flex flex-col gap-4 p-8 font-serif justify-center text-center bg-primary-light">
+          <h2 class="text-3xl md:text-4xl text-balance">${title}</h2>
+
+          <div class="w-full h-0.5 bg-primary-dark"></div>
+
+          <p class="text-xl md:text-2xl">
+            ${formattedDate}
+          </p>
+
+          <div class="flex gap-4 justify-center mt-4">
+            <div class="flex gap-0.5 text-white">
+              <a href="${audioUrl}" target="_blank">
+                <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-l-md">
+                  Listen
+                </div>
+              </a>
+              <a href="/api/download?src=${encodeURIComponent(audioUrl)}">
+                <div class="bg-primary px-4 xl:px-7 py-2 xl:py-3 rounded-r-md">
+                  Download
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+  } catch (err) {
+    console.error(err);
+    container.innerHTML = `
+      <div class="p-8 text-center font-serif bg-primary-light">
+        <p>Unable to load latest sermon.</p>
+      </div>
+    `;
+  }
+</script>
+
