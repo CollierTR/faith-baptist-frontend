@@ -42,6 +42,7 @@ export default function Header({ path }) {
       </div>
 
 
+
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center gap-5 font-serif text-xl text-primary-dark">
         {navLinks.map((link) => (
@@ -73,6 +74,8 @@ export default function Header({ path }) {
         ))}
       </nav>
 
+
+
       {/* Mobile Navigation */}
       <div className="lg:hidden">
         <button onClick={() => toggleNav(!navOpen)} className="text-2xl">
@@ -80,9 +83,11 @@ export default function Header({ path }) {
         </button>
       </div>
 
-      {navOpen && (
-        <div className="lg:hidden absolute top-full right-0 w-full bg-white shadow-md">
-          <nav className="flex flex-col items-center gap-4 py-4 font-serif text-lg text-primary-dark">
+
+
+      {!navOpen && (
+        <div className="lg:hidden absolute z-50 top-full min-h-screen right-0 w-full bg-white shadow-md">
+          <nav className="flex  flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
             {navLinks.map((link) => (
               <div key={link.href} className="w-full text-center">
                 {link.subLinks ? (
@@ -119,6 +124,9 @@ export default function Header({ path }) {
           </nav>
         </div>
       )}
+
+
+
     </div>
   );
 }

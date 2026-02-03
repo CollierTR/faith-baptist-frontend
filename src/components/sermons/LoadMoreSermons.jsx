@@ -64,7 +64,7 @@ export default function LoadMoreSermons({mode, value}) {
 
 
       </div>
-      <button onClick={() => setPage(page + 1)} disabled={loading} className={'my-10 px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out disabled:opacity-50'}>
+      <button onClick={() => setPage(page + 1)} disabled={loading} className={'my-10 px-6 py-3 bg-primary hover:bg-amber-700 text-white font-bold rounded-lg shadow-md transition duration-300 ease-in-out disabled:opacity-50'}>
         {loading ? 'Loading...' : 'Load More'}
       </button>
     </div>
