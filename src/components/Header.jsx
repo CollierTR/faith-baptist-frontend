@@ -1,4 +1,4 @@
-import { faBars, faX } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faX, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 
@@ -6,6 +6,7 @@ export default function Header({ path }) {
   const isActive = (href) =>
     href === "/" ? path === "/" : path.startsWith(href);
   const [navOpen, toggleNav] = useState(false);
+  const [resourcesDropdownOpen, toggleResourcesDropdown] = useState(false);
 
   const navLinks = [
     { href: "/", text: "Home" },
@@ -85,27 +86,33 @@ export default function Header({ path }) {
 
 
 
-      {!navOpen && (
+      {navOpen && (
         <div className="lg:hidden absolute z-50 top-full min-h-screen right-0 w-full bg-white shadow-md">
           <nav className="flex  flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
             {navLinks.map((link) => (
               <div key={link.href} className="w-full text-center">
                 {link.subLinks ? (
                   <div className="relative">
-                    <button className="w-full hover:text-secondary-dark">
+                    <button
+                      onClick={() => toggleResourcesDropdown(!resourcesDropdownOpen)}
+                      className="w-full hover:text-secondary-dark flex justify-center items-center gap-2"
+                    >
                       {link.text}
+                      <FontAwesomeIcon icon={resourcesDropdownOpen ? faChevronUp : faChevronDown} className="text-xl" />
                     </button>
-                    <div className="bg-white rounded-md mt-2 py-2 w-full">
-                      {link.subLinks.map((subLink) => (
-                        <a
-                          key={subLink.href}
-                          href={subLink.href}
-                          className="block px-4 py-2 text-primary-dark hover:bg-gray-100"
-                        >
-                          {subLink.text}
-                        </a>
-                      ))}
-                    </div>
+                    {resourcesDropdownOpen && (
+                      <div className="bg-gray-200 rounded-md mt-2 py-2 w-full">
+                        {link.subLinks.map((subLink) => (
+                          <a
+                            key={subLink.href}
+                            href={subLink.href}
+                            className="block px-4 py-6 text-primary-dark hover:bg-gray-100"
+                          >
+                            {subLink.text}
+                          </a>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 ) : (
                   <a
