@@ -1,6 +1,7 @@
 import { faBars, faX, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import {RemoveScroll} from 'react-remove-scroll';
 
 export default function Header({ path }) {
   const isActive = (href) =>
@@ -26,7 +27,7 @@ export default function Header({ path }) {
   ];
 
   return (
-    <div className="py-4 px-8 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
+    <div className="py-4 px-4 md:px-6 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
 
 
       <div className="w-20 relative hidden lg:block">
@@ -88,7 +89,7 @@ export default function Header({ path }) {
 
       {navOpen && (
         <div className="lg:hidden absolute z-50 top-full min-h-screen right-0 w-full bg-white shadow-md">
-          <nav className="flex  flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
+          <nav className="flex flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
             {navLinks.map((link) => (
               <div key={link.href} className="w-full text-center">
                 {link.subLinks ? (
@@ -101,7 +102,7 @@ export default function Header({ path }) {
                       <FontAwesomeIcon icon={resourcesDropdownOpen ? faChevronUp : faChevronDown} className="text-xl" />
                     </button>
                     {resourcesDropdownOpen && (
-                      <div className="bg-gray-200 rounded-md mt-2 py-2 w-full">
+                      <div className="bg-[#fafafa] rounded-md mt-2 py-2 w-full">
                         {link.subLinks.map((subLink) => (
                           <a
                             key={subLink.href}
@@ -129,6 +130,7 @@ export default function Header({ path }) {
               </div>
             ))}
           </nav>
+          <RemoveScroll />
         </div>
       )}
 
