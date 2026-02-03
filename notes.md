@@ -16,8 +16,6 @@ curl -s https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?per_pa
 
 
 - [ ] Finishing Touches (Tristan):
-    - [ ] Nav Menu on Mobile:
-        - [ ] style
     - [ ] About Page:
         - [ ] Review
     
