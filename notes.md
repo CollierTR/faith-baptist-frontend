@@ -13,12 +13,15 @@ curl -s https://media.faithbaptistkirksville.org/wp-json/wp/v2/categories?per_pa
 - [ ] About
   - [ ] Download: Constitution
   - [ ] Page: statement of faith
+- Sermon Page:
+    * search feature
+- Blog Page:
+    * search feature
 
 
 - [ ] Finishing Touches (Tristan):
     - [ ] About Page:
         - [ ] Review
-    
 
 
 # To-do for Cliff

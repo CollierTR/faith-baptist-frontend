@@ -1,17 +1,25 @@
 ---
-const { image="/imgs/Brandon.jpg", width="40px", name="Brandon Rhea", text="In 1978, Faith Baptist Church started meeting in homes. The Hardens, Webbers, and Walkers served as the founding members. The church eventually rented the upstairs of Slaughter Printing to hold their meetings. When the Church of God built a new building on the south side of Kirksville, Faith Baptist Church bought their old building which is the church’s current location. "} = Astro.props;
+const { 
+image="/imgs/Brandon.jpg", 
+name="Brandon Rhea", 
+flipped=false,
+text="Pastor Brandon Rhea was born and raised near Springfield, IL.  He graduated from Illinois College in 2007 with a B.A. in History, from Moody Theological Seminary in 2010 with a Master of Divinity, and a PhD  in Historical Theology in 2021 from Midwestern Baptist Theological Seminary in Kansas City. He authored Spurgeon's Forgotten Sabbatarianism with Founders Press. He is also an ACBC certified Biblical counselor. He is married to Karise with whom he raises Ian, Elizabeth, Patrick, and Christopher. He is interested in church history, especially Charles Spurgeon, and has a heart for street preaching and evangelism.  "
+} = Astro.props;
 ---
 
-<div class="flex flex-row justify-center rounded-2xl">
-  <div class="w-xl">
-    <img src={image} width={width}/>
+<div class=`flex flex-col ${flipped ? "lg:flex-row-reverse" : "lg:flex-row"} max-w-10/12 md:max-w-[550px] lg:max-w-[1200px] justify-center rounded-2xl bg-red-300 overflow-hidden mx-12`>
+
+  <div class="flex-1 lg:flex-2">
+    <img src={image} class="object-center lg:object-cover h-auto lg:h-full w-full lg:w-auto" />
   </div>
-  <div class="flex flex-col place-items-center px-5 font-serif justify-center bg-primary-light">
+
+  <div class="flex-3 flex flex-col place-items-center gap-6 p-8 font-serif justify-center text-center bg-primary-light">
     <div>
-        <h2 class="text-2xl">{name}</h2>
+        <h2 class="text-3xl">{name}</h2>
         </div>
         <div class="">
         <p class="text-lg"> {text}</p>
     </div>
   </div>
+
 </div>
