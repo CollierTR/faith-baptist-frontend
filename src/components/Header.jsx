@@ -1,7 +1,12 @@
-import { faBars, faX, faChevronDown, faChevronUp } from "@fortawesome/free-solid-svg-icons";
+import {
+  faBars,
+  faX,
+  faChevronDown,
+  faChevronUp,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
-import {RemoveScroll} from 'react-remove-scroll';
+import { RemoveScroll } from "react-remove-scroll";
 
 export default function Header({ path }) {
   const isActive = (href) =>
@@ -16,10 +21,19 @@ export default function Header({ path }) {
       href: "/resources",
       text: "Resources",
       subLinks: [
-        { href: "/blog", text: "Blog" },
-        { href: "/resources/links", text: "Links" },
-        { href: "https://classichymns.org/", text: "Hymn App" },
-        { href: "/resources/counseling", text: "Biblical Counseling" },
+        { href: "/blog", text: "Blog", newTab: "false" },
+        { href: "/resources/links", text: "Links", newTab: "false" },
+        { href: "https://classichymns.org/", text: "Hymn App", newTab: "true" },
+        {
+          href: "/resources/counseling",
+          text: "Biblical Counseling",
+          newTab: false,
+        },
+        {
+          href: "/faith-baptist-constitution.pdf",
+          text: "Church Constitution",
+          newTab: true,
+        },
       ],
     },
     { href: "/about", text: "About" },
@@ -28,22 +42,20 @@ export default function Header({ path }) {
 
   return (
     <div className="py-4 px-4 md:px-6 lg:px-16 bg-white flex justify-between items-center relative shadow-md">
-
-
       <div className="w-20 relative hidden lg:block">
         <a href="/">
-          <img src="/imgs/Church-Logo-Color.png" alt="Faith Baptist Church Logo" />
+          <img
+            src="/imgs/Church-Logo-Color.png"
+            alt="Faith Baptist Church Logo"
+          />
         </a>
       </div>
-
 
       <div className="text-2xl text-accent font-serif relative block lg:hidden">
         <a href="/">
           <p>Faith Baptist Church</p>
         </a>
       </div>
-
-
 
       {/* Desktop Navigation */}
       <nav className="hidden lg:flex items-center gap-5 font-serif text-xl text-primary-dark">
@@ -65,6 +77,7 @@ export default function Header({ path }) {
                   <a
                     key={subLink.href}
                     href={subLink.href}
+                    target={subLink.newTab == "true" ? "_blank" : "_self"}
                     className="block px-4 py-2 text-primary-dark text-nowrap hover:bg-gray-100"
                   >
                     {subLink.text}
@@ -76,16 +89,12 @@ export default function Header({ path }) {
         ))}
       </nav>
 
-
-
       {/* Mobile Navigation */}
       <div className="lg:hidden">
         <button onClick={() => toggleNav(!navOpen)} className="text-2xl">
           <FontAwesomeIcon icon={navOpen ? faX : faBars} />
         </button>
       </div>
-
-
 
       {navOpen && (
         <div className="lg:hidden absolute z-50 top-full min-h-screen right-0 w-full bg-white shadow-md">
@@ -95,11 +104,18 @@ export default function Header({ path }) {
                 {link.subLinks ? (
                   <div className="relative">
                     <button
-                      onClick={() => toggleResourcesDropdown(!resourcesDropdownOpen)}
+                      onClick={() =>
+                        toggleResourcesDropdown(!resourcesDropdownOpen)
+                      }
                       className="w-full hover:text-secondary-dark flex justify-center items-center gap-2"
                     >
                       {link.text}
-                      <FontAwesomeIcon icon={resourcesDropdownOpen ? faChevronUp : faChevronDown} className="text-xl" />
+                      <FontAwesomeIcon
+                        icon={
+                          resourcesDropdownOpen ? faChevronUp : faChevronDown
+                        }
+                        className="text-xl"
+                      />
                     </button>
                     {resourcesDropdownOpen && (
                       <div className="bg-[#fafafa] rounded-md mt-2 py-2 w-full">
@@ -133,9 +149,6 @@ export default function Header({ path }) {
           <RemoveScroll />
         </div>
       )}
-
-
-
     </div>
   );
 }
