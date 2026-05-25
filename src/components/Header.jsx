@@ -17,13 +17,15 @@ export default function Header({ path }) {
   const navLinks = [
     { href: "/", text: "Home" },
     { href: "/sermons", text: "Sermons" },
+    { href: "/about", text: "About" },
+    { href: "/contact", text: "Contact" },
     {
       href: "/resources",
       text: "Resources",
       subLinks: [
         { href: "/blog", text: "Blog", newTab: "false" },
-        { href: "/resources/links", text: "Links", newTab: "false" },
         { href: "https://classichymns.org/", text: "Hymn App", newTab: "true" },
+        { href: "/resources/links", text: "Links", newTab: "false" },
         {
           href: "/resources/counseling",
           text: "Biblical Counseling",
@@ -36,8 +38,6 @@ export default function Header({ path }) {
         },
       ],
     },
-    { href: "/about", text: "About" },
-    { href: "/contact", text: "Contact" },
   ];
 
   return (
@@ -72,7 +72,7 @@ export default function Header({ path }) {
               {link.text}
             </a>
             {link.subLinks && (
-              <div className="absolute hidden group-hover:block bg-white shadow-lg rounded-md mt-0 py-2 w-fit z-10">
+              <div className="absolute -right-6 hidden group-hover:block bg-white shadow-lg rounded-md mt-0 py-2 w-fit z-10">
                 {link.subLinks.map((subLink) => (
                   <a
                     key={subLink.href}
@@ -90,64 +90,73 @@ export default function Header({ path }) {
       </nav>
 
       {/* Mobile Navigation */}
-      <div className="lg:hidden">
-        <button onClick={() => toggleNav(!navOpen)} className="text-2xl">
-          <FontAwesomeIcon icon={navOpen ? faX : faBars} />
-        </button>
+      <div className="lg:hidden relative">
+        {!navOpen && (
+          <button onClick={() => toggleNav(true)} className="text-2xl">
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        )}
       </div>
 
       {navOpen && (
-        <div className="lg:hidden absolute z-50 top-full min-h-screen right-0 w-full bg-white shadow-md">
-          <nav className="flex flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
-            {navLinks.map((link) => (
-              <div key={link.href} className="w-full text-center">
-                {link.subLinks ? (
-                  <div className="relative">
-                    <button
-                      onClick={() =>
-                        toggleResourcesDropdown(!resourcesDropdownOpen)
-                      }
-                      className="w-full hover:text-secondary-dark flex justify-center items-center gap-2"
+        <RemoveScroll>
+          <div className="lg:hidden overflow-scroll fixed top-0 right-0 z-[50] h-screen w-full bg-white shadow-md">
+            <button
+              onClick={() => toggleNav(false)}
+              className="absolute top-4 right-4 md:right-6 text-2xl"
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
+            <nav className="flex flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
+              {navLinks.map((link) => (
+                <div key={link.href} className="w-full text-center">
+                  {link.subLinks ? (
+                    <div className="relative">
+                      <button
+                        onClick={() =>
+                          toggleResourcesDropdown(!resourcesDropdownOpen)
+                        }
+                        className="w-full hover:text-secondary-dark flex justify-center items-center gap-2"
+                      >
+                        {link.text}
+                        <FontAwesomeIcon
+                          icon={
+                            resourcesDropdownOpen ? faChevronUp : faChevronDown
+                          }
+                          className="text-xl"
+                        />
+                      </button>
+                      {resourcesDropdownOpen && (
+                        <div className="bg-[#fafafa] rounded-md mt-2 py-2 w-full">
+                          {link.subLinks.map((subLink) => (
+                            <a
+                              key={subLink.href}
+                              href={subLink.href}
+                              className="block px-4 py-6 text-primary-dark hover:bg-gray-100"
+                            >
+                              {subLink.text}
+                            </a>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <a
+                      href={link.href}
+                      className={`${
+                        isActive(link.href)
+                          ? "underline underline-offset-4 decoration-accent decoration-2"
+                          : ""
+                      } w-full block hover:text-secondary-dark`}
                     >
                       {link.text}
-                      <FontAwesomeIcon
-                        icon={
-                          resourcesDropdownOpen ? faChevronUp : faChevronDown
-                        }
-                        className="text-xl"
-                      />
-                    </button>
-                    {resourcesDropdownOpen && (
-                      <div className="bg-[#fafafa] rounded-md mt-2 py-2 w-full">
-                        {link.subLinks.map((subLink) => (
-                          <a
-                            key={subLink.href}
-                            href={subLink.href}
-                            className="block px-4 py-6 text-primary-dark hover:bg-gray-100"
-                          >
-                            {subLink.text}
-                          </a>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ) : (
-                  <a
-                    href={link.href}
-                    className={`${
-                      isActive(link.href)
-                        ? "underline underline-offset-4 decoration-accent decoration-2"
-                        : ""
-                    } w-full block hover:text-secondary-dark`}
-                  >
-                    {link.text}
-                  </a>
-                )}
-              </div>
-            ))}
-          </nav>
-          <RemoveScroll />
-        </div>
+                    </a>
+                  )}
+                </div>
+              ))}
+            </nav>
+          </div>
+        </RemoveScroll>
       )}
     </div>
   );
