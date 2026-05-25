@@ -90,15 +90,23 @@ export default function Header({ path }) {
       </nav>
 
       {/* Mobile Navigation */}
-      <div className="lg:hidden relative z-[60]">
-        <button onClick={() => toggleNav(!navOpen)} className="text-2xl">
-          <FontAwesomeIcon icon={navOpen ? faX : faBars} />
-        </button>
+      <div className="lg:hidden relative">
+        {!navOpen && (
+          <button onClick={() => toggleNav(true)} className="text-2xl">
+            <FontAwesomeIcon icon={faBars} />
+          </button>
+        )}
       </div>
 
       {navOpen && (
         <RemoveScroll>
           <div className="lg:hidden overflow-scroll fixed top-0 right-0 z-[50] h-screen w-full bg-white shadow-md">
+            <button
+              onClick={() => toggleNav(false)}
+              className="absolute top-4 right-4 md:right-6 text-2xl"
+            >
+              <FontAwesomeIcon icon={faX} />
+            </button>
             <nav className="flex flex-col items-center gap-12 py-12 font-serif text-3xl text-primary-dark">
               {navLinks.map((link) => (
                 <div key={link.href} className="w-full text-center">
