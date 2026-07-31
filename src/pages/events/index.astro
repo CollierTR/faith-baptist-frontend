@@ -1,0 +1,93 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import EventRegistration from '../../components/events/EventRegistration.jsx';
+---
+
+<Layout
+  title="Events - FBC"
+  description="Upcoming events at Faith Baptist Church in Kirksville, Missouri."
+>
+  <main class="w-full min-h-screen mx-auto">
+
+    <!-- Header Banner -->
+    <div class="w-full lg:w-10/12 max-w-[2000px] mx-auto lg:rounded-b-2xl bg-primary flex justify-center items-center py-20">
+      <h1 class="text-4xl lg:text-6xl font-bold text-white">Events</h1>
+    </div>
+
+    <div class="w-10/12 lg:w-10/12 max-w-6xl mx-auto my-10">
+
+      <!-- Sola Scriptura Conference -->
+      <section class="bg-white rounded-xl shadow-lg my-16">
+        <!-- Accent bar -->
+        <div class="bg-accent h-1.5 w-full"></div>
+
+        <div class="p-8 lg:p-12">
+          <p class="text-accent font-semibold text-sm uppercase tracking-widest mb-2">Upcoming Event</p>
+          <h2 class="text-3xl lg:text-4xl font-bold text-primary mb-6">Sola Scriptura Conference</h2>
+
+          <div class="flex flex-col gap-5 text-lg text-gray-700">
+              <p class="text-xl leading-relaxed">
+                Join us at Faith Baptist Church in Kirksville, Missouri, for a one-day conference on Sola Scriptura with Dr. Jim Renihan.
+              </p>
+
+              <p class="leading-relaxed">
+                Come spend the day considering the sufficiency and authority of God's Word through faithful biblical teaching and fellowship.
+              </p>
+
+              <p class="text-primary font-medium mt-2">We'd love to have you join us!</p>
+
+              <!-- Event Details -->
+              <div class="bg-primary-light rounded-xl p-8 flex flex-col gap-5">
+                <h3 class="text-xl font-bold text-primary border-b border-primary/20 pb-3">Event Details</h3>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl mt-0.5">📅</span>
+                  <div>
+                    <p class="font-semibold text-primary-dark">Date</p>
+                    <p class="text-gray-700">Saturday, September 26, 2026</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl mt-0.5">🕤</span>
+                  <div>
+                    <p class="font-semibold text-primary-dark">Time</p>
+                    <p class="text-gray-700">9:30 AM – 3:30 PM</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl mt-0.5">📍</span>
+                  <div>
+                    <p class="font-semibold text-primary-dark">Location</p>
+                    <p class="text-gray-700">Faith Baptist Church<br/>2010 S Halliburton St<br/>Kirksville, Missouri</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl mt-0.5">🍽️</span>
+                  <div>
+                    <p class="font-semibold text-primary-dark">Lunch</p>
+                    <p class="text-gray-700">Provided</p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <span class="text-2xl mt-0.5">💰</span>
+                  <div>
+                    <p class="font-semibold text-primary-dark">Cost</p>
+                    <p class="text-gray-700">Free</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="mt-4">
+                <EventRegistration client:load />
+              </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+</Layout>

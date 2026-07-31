@@ -19,6 +19,7 @@ export default function Header({ path }) {
     { href: "/sermons", text: "Sermons" },
     { href: "/about", text: "About" },
     { href: "/contact", text: "Contact" },
+    { href: "/events", text: "Events" },
     {
       href: "/resources",
       text: "Resources",
