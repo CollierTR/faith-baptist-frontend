@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
-import speakers from "../../data/speakers.js"
 
 export default function BlogCards({mode, value}) {
   console.log(mode, value)
@@ -42,7 +41,6 @@ export default function BlogCards({mode, value}) {
       <div className={"flex flex-col gap-10 w-full"}>
 
         {sermons.map(sermon => {
-          const speaker = speakers.find(s => s.id === sermon.author);
         return(
           <a href={`/blog/${sermon.slug}`} key={sermon.id} className={'w-full bg-white rounded-md p-10 flex flex-col gap-10 justify-between leading-normal shadow-lg drop-shodow-lg'}>
             <div className="flex flex-col gap-1">
