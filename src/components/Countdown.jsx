@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 
+const TIME_ZONE = "America/Chicago";
+
 const SESSIONS = [
-  { name: "Sunday School", day: 0, hour: 9, minute: 0, durationMinutes: 60 },
-  { name: "Prayer Meeting", day: 3, hour: 19, minute: 0, durationMinutes: 60 },
+  { name: "Sunday School", day: 0, hour: 10, minute: 0, durationMinutes: 10 },
+  { name: "Main Service", day: 0, hour: 11, minute: 0, durationMinutes: 10 },
+  { name: "Prayer Meeting", day: 3, hour: 19, minute: 0, durationMinutes: 10 },
 ];
 
 function sessionStart(now, session) {
@@ -23,10 +26,37 @@ function getNextSession(now) {
     .sort((a, b) => a.start - b.start)[0];
 }
 
+function chicagoNow() {
+  const parts = Object.fromEntries(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: TIME_ZONE,
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      second: "numeric",
+      hour12: false,
+    })
+      .formatToParts(new Date())
+      .map((part) => [part.type, part.value]),
+  );
+  let hour = Number(parts.hour);
+  if (hour === 24) hour = 0;
+  return new Date(
+    parts.year,
+    parts.month - 1,
+    parts.day,
+    hour,
+    parts.minute,
+    parts.second,
+  );
+}
+
 function useNow() {
-  const [now, setNow] = useState(() => new Date());
+  const [now, setNow] = useState(() => chicagoNow());
   useEffect(() => {
-    const timer = setInterval(() => setNow(new Date()), 1000);
+    const timer = setInterval(() => setNow(chicagoNow()), 1000);
     return () => clearInterval(timer);
   }, []);
   return now;
