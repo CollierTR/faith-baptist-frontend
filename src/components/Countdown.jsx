@@ -87,7 +87,7 @@ function SessionDisplay({ name, start, hours, minutes }) {
         {name}
       </p>
       <div className="flex gap-8 lg:gap-14">
-        <TimeUnit value={hours} label="Hours" />
+        {hours > 0 && <TimeUnit value={hours} label="Hours" />}
         <TimeUnit value={minutes} label="Minutes" />
       </div>
       <p className="mt-10 text-lg lg:text-xl text-primary-light text-center">
